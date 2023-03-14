@@ -62,7 +62,7 @@
                 padding: 1rem;
                 border-radius: .5rem;
                 transition: all .5s;
-                
+
                 &__logo {
                     background-image: url('../../assets/images/icons/user-large1.png');
                     background-repeat: no-repeat;
@@ -82,10 +82,10 @@
 
     .hover {
         &:hover {
-                cursor: pointer;
-                background-color: rgba(83, 83, 83, 0.6);
-                transform: scale(1.05);
-                transition: all .5s;
+            cursor: pointer;
+            background-color: rgba(83, 83, 83, 0.6);
+            transform: scale(1.05);
+            transition: all .5s;
         }
     }
 }

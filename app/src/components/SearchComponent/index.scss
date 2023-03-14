@@ -1,43 +1,79 @@
+@import '../../assets/styles/main.scss';
+
+.search-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: $background-primary;
+}
+
 .search {
-    height: 50%;
-    background-color: rgba(5, 32, 60, 1.0);
+    height: 100%;
     color: white;
     box-sizing: border-box;
-    width: 100%;
-
+    width: 60%;
 
     &__title {
         font-size: 1.6rem;
         font-weight: 600;
-        margin-left: 18rem;
         display: flex;
+        height: 40%;
     }
 
     &__container {
         display: flex;
-        margin-left: 18rem;
-        padding-bottom: 5rem;
+        justify-content: space-between;
+        height: 60%;
+        align-items: center;
 
-        &-textbox {
-            height: 6rem;
-            width: 16rem;
-            margin: .2rem;
-            border-radius: 6%;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            font-size: 2.2rem;
+        &-inputs {
+
+            height: 60%;
+            display: flex;
+            align-items: center;
+            width: 90%;
+            gap: 0.35rem;
+
+            &--textbox {
+                height: 100%;
+                width: 15%;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                font-size: 2.2rem;
+                border: none;
+            }
         }
 
         &-button {
-            margin-left: 6rem;
-            height: 7rem;
-            width: 12rem;
+            height: 60%;
+            width: 8%;
             border-radius: 12%;
-            background-color: rgb(85, 85, 233);
-            border-color: rgb(85, 85, 233);
+            background-color: $bg-button;
             color: white;
-            font-size: 2.4rem;
+            font-size: 2rem;
             font-weight: 600;
+            border: none;
+            font-family: 'Open Sans';
+            transition: all .3s;
+
+            &:hover {
+                cursor: pointer;
+                background-color: $bg-button-hover;
+                transition: all .3s;
+            }
         }
     }
+}
+
+.input-rounded-left {
+    border-radius: 0.75rem 0.0rem 0.0rem 0.75rem;
+}
+
+.input-rounded-right {
+    border-radius: 0.0rem 0.75rem 0.75rem 0.0rem;
+}
+
+.grow {
+    flex-grow: 1.5;
 }

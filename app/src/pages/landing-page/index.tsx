@@ -1,4 +1,5 @@
 import InfoCard from '../../components/InfoCard';
+import LandingArticle from '../../components/LandingArticle';
 import SearchComponent from '../../components/SearchComponent';
 import './index.scss'
 
@@ -15,6 +16,9 @@ const LandingPage = () => {
                 <InfoCard title='Latest blogs' routerUrl='/news' imgUrl={require('../../assets/images/icons/blogs.png')} />
                 <InfoCard title='Explore the world' routerUrl='/news' imgUrl={require('../../assets/images/icons/planet.png')} />
             </div>
+        </div>
+        <div className='landing__article'>
+            <LandingArticle />
         </div>
     </div>)
 }

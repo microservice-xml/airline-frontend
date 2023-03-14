@@ -1,0 +1,15 @@
+.news {
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2% 0%;
+
+    &__articles {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+}

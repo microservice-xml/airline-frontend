@@ -18,7 +18,6 @@
 
         display: flex;
         flex-direction: column;
-        height: 66%;
         width: 66%;
         font-weight: 600;
 
@@ -61,5 +60,11 @@
                 cursor: pointer;
             }
         }
+    }
+}
+
+@media (max-width: 1450px) {
+    .landing-article {
+        width: 75%;
     }
 }

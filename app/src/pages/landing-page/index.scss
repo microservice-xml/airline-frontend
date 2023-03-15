@@ -36,3 +36,14 @@
         border-radius: 2rem;
     }
 }
+
+@media (max-width: 1450px) {
+
+    .landing {
+        &__cards {
+            &-container {
+                width: 75%;
+            }
+        }
+    }
+}

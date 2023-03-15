@@ -1,5 +1,8 @@
 import React from "react";
+import cities from "../../constants/Cities";
 import "./index.scss"
+import CustomAutocomplete from "../FormComponents/CustomAutocomplete";
+import CustomDateRangePicker from "../FormComponents/CustomDateRangePicker";
 
 const SearchComponent = () => {
 
@@ -17,10 +20,10 @@ const SearchComponent = () => {
             </div>
             <div className="search__container">
                 <div className="search__container-inputs">
-                    <input type="text" className="search__container-inputs--textbox input-rounded-left grow"></input>
-                    <input type="text" className="search__container-inputs--textbox"></input>
-                    <input type="text" className="search__container-inputs--textbox" onClick={handleClickDate}></input>
-                    <input type="text" className="search__container-inputs--textbox"></input>
+                    <CustomAutocomplete cities={cities} label={'From'} customClass={"search__container-inputs--textbox input-rounded-left grow"}/>
+                    <CustomAutocomplete cities={cities} label={'To'} customClass={"search__container-inputs--textbox grow"}/>
+                    <CustomDateRangePicker label={'Depart'} helperText={'DD/MM/YYYY'}/>
+                    <CustomDateRangePicker label={'Return'} helperText={'DD/MM/YYYY'}/>
                     <input type="text" className="search__container-inputs--textbox input-rounded-right"></input>
                 </div>
                 <button className="search__container-button">Search</button>

@@ -1,4 +1,4 @@
-import { request } from "./../base/HTTP";
+import { makeParametersList, request } from "./../base/HTTP";
 import HttpMethod from "../../constants/HttpMethod";
 
 export async function getAllArticles() {
@@ -7,4 +7,8 @@ export async function getAllArticles() {
 
 export async function getRandomArticle() {
     return await request("/news/random");
+}
+
+export async function getSearchValues(parameters: any){
+    return await request("/flight/search" + makeParametersList(parameters))
 }

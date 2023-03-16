@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import News from "../pages/news";
 import Blog from "../pages/blog";
 import LandingPage from "../pages/landing-page";
+import LoginPage from "../pages/login";
 
 let unregisteredPages = {
     News: {
@@ -15,6 +16,10 @@ let unregisteredPages = {
     Landing: {
         path: '/',
         component: <LandingPage/>
+    },
+    Login: {
+        path: '/authenticate',
+        component: <LoginPage />
     }
 };
 

@@ -16,7 +16,6 @@ const Axios = (function () {
       if (!instance) {
         instance = createInstance();
       }
-      console.log(getToken());
       if (getToken() !== "Bearer null") {
         instance.defaults.headers.common["Authorization"] = getToken();
       }
@@ -89,7 +88,7 @@ export async function request(
   } catch {}
 }
 
-export async function connect(url : string, data : any, method : any, options : any) {
+export async function connect(url : string, data : any, method : string, options : any) {
   switch (method) {
     case HttpMethod.GET: {
       return await Axios.getInstance().get(url, options);
@@ -112,9 +111,6 @@ export async function connect(url : string, data : any, method : any, options : 
 // Ovo pravi query parametre jedan za drugim
 export function makeParametersList(parameters : any) {
   let parametersList = "?";
-
-  console.log("PARAMETERS");
-  console.log(parameters);
 
   Object.keys(parameters).map(
     (key, index) =>

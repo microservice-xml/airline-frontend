@@ -1,4 +1,5 @@
 import { Autocomplete, Box, TextField } from "@mui/material";
+import { Controller } from "react-hook-form";
 import cities from "../../../constants/Cities";
 import CustomPopperStyled from "../CustomPopper";
 import './index.scss';
@@ -28,7 +29,7 @@ const CustomAutocomplete : React.FC<{cities: any[], label : string, customClass 
                         options={props.cities}
                         renderInput={(params) => <TextField {...params} defaultValue={cities[1]} style={sxStyle}/>}
                         style={sxStyle}
-                        freeSolo={true} 
+                        freeSolo={true}
                         renderOption={(props, city) => (
                             <Box component="li" sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
                                 <img

@@ -3,32 +3,37 @@ import News from "../pages/news";
 import Blog from "../pages/blog";
 import LandingPage from "../pages/landing-page";
 import LoginPage from "../pages/login";
+import ChooseFlight from "../pages/choose-flight";
 
 let unregisteredPages = {
-    News: {
-        path: '/news',
-        component: <News/>,
-    },
-    Blog: {
-        path: '/news/:slug',
-        component: <Blog/>
-    },
-    Landing: {
-        path: '/',
-        component: <LandingPage/>
-    },
-    Login: {
-        path: '/authenticate',
-        component: <LoginPage />
-    }
+  News: {
+    path: '/news',
+    component: <News />,
+  },
+  Blog: {
+    path: '/news/:slug',
+    component: <Blog />
+  },
+  Landing: {
+    path: '/',
+    component: <LandingPage />
+  },
+  Login: {
+    path: '/authenticate',
+    component: <LoginPage />
+  },
+  ChooseFlight: {
+    path: '/choose-flight',
+    component: <ChooseFlight />
+  }
 };
 
-let ROUTES : any = {}
+let ROUTES: any = {}
 
 Object.assign(ROUTES, ROUTES, unregisteredPages);
 
 export function getRoutes() {
-  let result : any[] = [];
+  let result: any[] = [];
 
   for (const [key, value] of Object.entries(ROUTES)) {
     result.push(

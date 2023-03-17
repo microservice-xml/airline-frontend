@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import cities from "../../constants/Cities";
 import "./index.scss"
 import AutocompleteControl from "../FormComponents/AutocompleteControl";
 import DatePickerControl from "../FormComponents/DatePickerControl";
 import {useForm, FormProvider} from 'react-hook-form';
 import passengers from "../../constants/Passengers";
-import { useNavigate } from "react-router-dom";
 import { getSearchValues } from "../../services/news/newsService";
 
 const SearchComponent = () => {

@@ -3,11 +3,11 @@ import { toast } from "react-toastify";
 import HttpMethod from "../../constants/HttpMethod";
 
 const Axios = (function () {
-  let instance : any;
+  let instance: any;
 
   function createInstance() {
     return axios.create({
-      baseURL: "http://localhost:8081",
+      baseURL: "http://localhost:8081/api",
     });
   }
 
@@ -27,11 +27,11 @@ const Axios = (function () {
 })();
 
 Axios.getInstance().interceptors.response.use(
-  (response : any) => {
+  (response: any) => {
     response.ok = response.status >= 200 && response.status < 300;
     return response;
   },
-  async (error : any) => {
+  async (error: any) => {
     const {
       response: { status, data },
     } = error;
@@ -78,7 +78,7 @@ Axios.getInstance().interceptors.response.use(
 );
 
 export async function request(
-  url : any,
+  url: any,
   data = [],
   method = HttpMethod.GET,
   options = {}
@@ -88,7 +88,12 @@ export async function request(
   } catch {}
 }
 
-export async function connect(url : string, data : any, method : string, options : any) {
+export async function connect(
+  url: string,
+  data: any,
+  method: string,
+  options: any
+) {
   switch (method) {
     case HttpMethod.GET: {
       return await Axios.getInstance().get(url, options);
@@ -109,7 +114,7 @@ export async function connect(url : string, data : any, method : string, options
 }
 
 // Ovo pravi query parametre jedan za drugim
-export function makeParametersList(parameters : any) {
+export function makeParametersList(parameters: any) {
   let parametersList = "?";
 
   Object.keys(parameters).map(
@@ -117,7 +122,9 @@ export function makeParametersList(parameters : any) {
       (parametersList += parameters[key] ? `${key}=${parameters[key]}&` : "")
   );
 
-  return parametersList === "?" ? "" : parametersList.slice(0, parametersList.length - 1);
+  return parametersList === "?"
+    ? ""
+    : parametersList.slice(0, parametersList.length - 1);
 }
 
 // Preuzimanje tokena iz local storage

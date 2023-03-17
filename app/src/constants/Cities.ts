@@ -1,4 +1,6 @@
-const cities = [
+import Option from "../model/search/Option";
+
+const cities: Option[] = [
   {
     label: "Tokyo–Yokohama",
   },

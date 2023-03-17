@@ -2,7 +2,6 @@ import Popper, { PopperProps } from "@mui/material/Popper";
 import { styled } from "@mui/material/styles";
 
 const CustomPopper = styled(Popper)<PopperProps>(({ theme }) => ({
-    width: '50rem',
         "& .MuiAutocomplete-listbox": {
             width: "100%",
             fontSize: "1.8rem",
@@ -30,5 +29,5 @@ const CustomPopper = styled(Popper)<PopperProps>(({ theme }) => ({
 
     
 export default function CustomPopperStyled(props : any) {
-    return <CustomPopper {...props} style={{width: '30rem'}}/>
+    return <CustomPopper {...props} style={{width: props.width}}/>
 }

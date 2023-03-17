@@ -10,5 +10,6 @@ export async function getRandomArticle() {
 }
 
 export async function getSearchValues(parameters: any){
-    return await request("/flight/search" + makeParametersList(parameters))
+    console.log("/api/flight/search" + makeParametersList(parameters))
+    return await request("/api/flight/search" + makeParametersList(parameters))
 }

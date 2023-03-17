@@ -117,7 +117,7 @@ export function makeParametersList(parameters : any) {
       (parametersList += parameters[key] ? `${key}=${parameters[key]}&` : "")
   );
 
-  return parametersList === "?" ? "" : parametersList;
+  return parametersList === "?" ? "" : parametersList.slice(0, parametersList.length - 1);
 }
 
 // Preuzimanje tokena iz local storage

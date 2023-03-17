@@ -1,23 +1,40 @@
 import TextField from "@mui/material/TextField";
 import { Controller } from "react-hook-form";
 import React from "react";
+import GenericProps from "./props";
+import styled from "@mui/material/styles/styled";
 
-const TextFieldControl : React.FC<{name : string, 
-                                   control: any, 
-                                   defaultValue?: string, 
-                                   rules?: any,
-                                   size?: any,
-                                   fullWidth? : boolean,
-                                   type? : any,
-                                   margin? : any,
-                                   error?: any,
-                                   helperText? : string,
-                                   label: string,
-                                   disabled? : boolean,
-                                   placeholder? : string,
-                                   inputRef? : any}> = (props) => {
+
+export const StyledTextField = styled(TextField)({
+  '&. css-1y1htz2-MuiFormControl-root-MuiTextField-root': {
+    height: '100%',
+    fontSize: '1.8rem',
+    padding: '1rem !important'
+  },
+  '& .MuiFormLabel-root-MuiInputLabel-root': {
+    top: "-1rem"
+  },
+  '& .MuiInputLabel-root': {
+    fontSize: '1.8rem',
+  },
+  '& .MuiInputBase-root': {
+    background: '#fff',
+    borderRadius: '4px',
+    borderBottom: '1px solid #ccc',
+    '&.Mui-focused': {
+      borderBottom: '1px solid #fff',
+    },
+  },
+  '& .MuiInputBase-input': {
+    padding: '15px 15px',
+    fontSize: '1.8rem',
+  },
+  },
+)
+
+
+const TextFieldControl : React.FC<GenericProps> = (props) => {
   return (
-    <span className={"text-field-control-wrapper"}>
       <Controller
         name={props.name}
         control={props.control}
@@ -26,16 +43,15 @@ const TextFieldControl : React.FC<{name : string,
         
         render={({ field }) => {
           return (
-            <TextField
+            <StyledTextField
               {...field}
               InputLabelProps={{ shrink: Boolean(field.value) }}
-              size={props.size ? props.size : "small"}
               fullWidth={props.fullWidth ? props.fullWidth : true}
               type={props.type}
-              margin={props.margin ? props.margin : "normal"}
               error={props.error}
               helperText={props.helperText}
               label={props.label}
+              variant="filled"
               disabled={props.disabled}
               placeholder={props.placeholder}
               inputRef={(input) => {
@@ -47,7 +63,6 @@ const TextFieldControl : React.FC<{name : string,
           );
         }}
       />
-    </span>
   );
 };
 

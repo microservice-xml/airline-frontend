@@ -23,12 +23,18 @@
         height: 100%;
         border-radius: 5rem;
         box-sizing: border-box;
-        padding: 10rem 5rem;
+        padding: 8rem 5rem;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         display: flex;
         align-items: center;
         flex-direction: column;
         gap: 5rem;
+
+        &__header {
+            font-weight: 600;
+            color: $color-black;
+            font-size: 2rem;
+        }
 
         &__item {
             height: 35%;

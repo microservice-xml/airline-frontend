@@ -16,6 +16,7 @@ export const StyledTextField = styled(TextField)({
   },
   '& .MuiInputLabel-root': {
     fontSize: '1.8rem',
+    top: '-.7rem'
   },
   '& .MuiInputBase-root': {
     background: '#fff',
@@ -29,6 +30,9 @@ export const StyledTextField = styled(TextField)({
     padding: '15px 15px',
     fontSize: '1.8rem',
   },
+  '& .MuiFormHelperText-root': {
+    fontSize: '1.2rem'
+  }
   },
 )
 

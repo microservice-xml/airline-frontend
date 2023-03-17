@@ -78,8 +78,7 @@ const AutocompleteControl : React.FC<AutocompleteProps> = (props) => {
                         render={({field : {onChange, value}}) => (
                             <StyledAutocompleteControl                       
                                 options={props.options}
-                                defaultValue={props.defaultValue}
-                                renderInput={(params) => <StyledTextField variant="filled" {...params} label={props.label} onChange={onChange} defaultValue={(props.defaultValue as any).label}/>}
+                                renderInput={(params) => <StyledTextField variant="filled" {...params} label={props.label} onChange={onChange}/>}
                                 style={sxStyle}
                                 freeSolo={true}
                                 value={value || null}

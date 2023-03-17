@@ -9,6 +9,10 @@ function Header() {
         navigate('/')
     }
 
+    const loginHandler = () => {
+        navigate('/authenticate')
+    }
+
     return (<div className={'header'}>
         <div className={'header-main'}>
             <div className={'header-main__logo'} onClick={handleClick}>
@@ -27,7 +31,7 @@ function Header() {
                     <div className={'header-main__options-login__logo'}>
 
                     </div>
-                    <div className={'header-main__options-login__text'}>
+                    <div className={'header-main__options-login__text'} onClick={loginHandler}>
                         Log in
                     </div>
                 </div>

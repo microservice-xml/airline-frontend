@@ -3,6 +3,11 @@
     height: 100%;
     width: 100%;
 
+    &__search {
+        height: 20%;
+        margin-bottom: 3%;
+    }
+
     &__cards {
 
         display: flex;
@@ -10,14 +15,35 @@
         align-items: center;
         height: 15%;
         padding: 3rem 0rem;
+        margin-bottom: 3%;
 
         &-container {
             height: 100%;
-            width: 75%;
+            width: 60%;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
+    }
+
+    &__article {
+        height: 45%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 2rem;
+    }
+}
+
+@media (max-width: 1450px) {
+
+    .landing {
+        &__cards {
+            &-container {
+                width: 75%;
+            }
+        }
     }
 }

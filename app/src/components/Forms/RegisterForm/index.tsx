@@ -26,7 +26,7 @@ const RegisterForm = () => {
     let response: any;
     response = await registerUser(dto);
     if (!response || !response.ok) {
-      ErrorMessage("Invalid input, please try again");
+      ErrorMessage("Email already used.");
       return;
     }
 

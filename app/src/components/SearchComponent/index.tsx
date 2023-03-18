@@ -23,16 +23,20 @@ const SearchComponent = () => {
     } = form
 
     const onSubmit = async (dto: any) => {
-        console.log(dto);
+        // console.log(dto);
         let obj = {
             arrivalCity: dto.to,
             departureCity: dto.from,
             arrival: dto.arrival.toISOString().replace("23:00", "13:30").slice(0, 19),
-            desiredSeats: 2
+            desiredSeats: dto.desiredSeats,
         }
         let response = await getSearchValues(obj)
-        console.log(response.data);
-        navigate('/choose-flight');
+        //console.log(response.data);
+        navigate('/choose-flight', {
+            state: {
+                data: response.data,
+            }
+        });
     }
 
     return (

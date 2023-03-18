@@ -1,22 +1,31 @@
 import React from "react";
 import "./index.scss"
 
-const SearchResult = () => {
+type Props = {
+    arrivalCity: string;
+    departureCity: string;
+    arrival: Date;
+    departure: Date;
+}
+
+const SearchResult = ({ arrivalCity, departureCity, arrival, departure }: Props) => {
+    console.log(departure);
     return (
+
         <div className="search-result">
             <div className="search-result__icon">
 
             </div>
             <div className="search-result__destination">
-                <label>Belgrade</label>
-                <label>-</label>
-                <label>London</label>
+                {departureCity}
+                -
+                {arrivalCity}
             </div>
             <div className="search-result__dateFrom">
-                <label>Mon, 20 Mar</label>
+                Fri, 20 Mar
             </div>
             <div className="search-result__dateTo">
-                <label>Mon, 27 Mar</label>
+                Mon, 27 Mar
             </div>
         </div >
     );

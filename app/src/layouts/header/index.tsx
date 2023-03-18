@@ -22,24 +22,24 @@ function Header() {
 
     const getLoginButton = () => {
         return (<div className={'header-main__options-login hover'} onClick={loginHandler}>
-                    <div className={'header-main__options-login__logo--login'}>
+            <div className={'header-main__options-login__logo--login'}>
 
-                    </div>
-                    <div className={'header-main__options-login__text'} >
-                        Log in
-                    </div>
-                </div>)
+            </div>
+            <div className={'header-main__options-login__text'} >
+                Log in
+            </div>
+        </div>)
     }
 
     const getLogoutButton = () => {
         return (<div className={'header-main__options-login hover'} onClick={logoutHandler}>
-                    <div className={'header-main__options-login__logo--logout'}>
+            <div className={'header-main__options-login__logo--logout'}>
 
-                    </div>
-                    <div className={'header-main__options-login__text'} >
-                        Logout
-                    </div>
-                </div>)
+            </div>
+            <div className={'header-main__options-login__text'} >
+                Logout
+            </div>
+        </div>)
     }
 
     return (<div className={'header'}>

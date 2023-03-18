@@ -21,6 +21,9 @@ const TicketCard = () => {
                     <div className="card__bottom__left__from">
                         16:00h
                     </div>
+                    <div className="card__bottom__left__icon">
+
+                    </div>
                     <div className="card__bottom__left__to">
                         20:00h
                     </div>

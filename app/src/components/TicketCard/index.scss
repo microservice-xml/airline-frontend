@@ -5,6 +5,7 @@
     width: 50%;
     border-radius: 1.3rem;
     background-color: white;
+    margin-bottom: 3%;
 
 
     &__top {
@@ -58,12 +59,21 @@
 
 
             &__from {
-                margin-left: 10%;
+                margin-left: 25%;
                 font-size: 2.5rem;
             }
 
+            &__icon {
+                background-image: url('../../assets/images/icons/plane.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                height: 4rem;
+                width: 4rem;
+            }
+
             &__to {
-                margin-right: 10%;
+                margin-right: 25%;
                 font-size: 2.5rem;
             }
         }
@@ -95,6 +105,13 @@
                 border: none;
                 border-radius: .5rem;
                 font-weight: 500;
+                transition: all .5s;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #01897c;
+                    transition: all .5s;
+                }
 
                 // background-image: url('../../assets/images/icons/rightarrow.png');
                 // background-repeat: no-repeat;

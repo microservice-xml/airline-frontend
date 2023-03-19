@@ -1,0 +1,41 @@
+@import "../../assets/styles/main.scss";
+
+.populars {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 60%;
+  box-sizing: border-box;
+  margin-top: 5%;
+
+  &__header {
+    &--title {
+      font-size: 3rem;
+      color: $color-black;
+      word-wrap: break-word;
+      font-weight: 1000;
+    }
+
+    &--desc {
+      margin-top: 2%;
+      color: $color-black;
+      font-weight: 500;
+      font-size: 2rem;
+    }
+  }
+
+  &__cards {
+    margin-top: 3%;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 3%;
+    height: 70%;
+  }
+}
+
+@media (max-width: 1450px) {
+  .populars {
+    width: 75%;
+  }
+}

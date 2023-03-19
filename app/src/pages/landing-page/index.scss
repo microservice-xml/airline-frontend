@@ -1,49 +1,62 @@
+@import "../../assets/styles/main.scss";
+
 .landing {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 100;
 
-    height: 100%;
+  &__search {
+    height: 20%;
+    margin-bottom: 3%;
+    position: relative;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    z-index: 10;
+    padding-bottom: 2rem;
+    background-color: $background-primary;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15%;
+    padding: 3rem 0rem;
+    margin-bottom: 3%;
+
+    &-container {
+      height: 100%;
+      width: 60%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__article {
+    height: 45%;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2rem;
+  }
 
-    &__search {
-        height: 20%;
-        margin-bottom: 3%;
-    }
-
-    &__cards {
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 15%;
-        padding: 3rem 0rem;
-        margin-bottom: 3%;
-
-        &-container {
-            height: 100%;
-            width: 60%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-    }
-
-    &__article {
-        height: 45%;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 2rem;
-    }
+  &__populars {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 1450px) {
-
-    .landing {
-        &__cards {
-            &-container {
-                width: 75%;
-            }
-        }
+  .landing {
+    &__cards {
+      &-container {
+        width: 75%;
+      }
     }
+  }
 }

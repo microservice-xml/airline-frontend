@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import SearchResult from "../../components/SearchResult";
 import SearchSort from "../../components/SearchSort";
 import TicketCard from "../../components/TicketCard";
@@ -9,16 +10,25 @@ const ChooseFlight = () => {
 
     const location = useLocation();
 
-    const data = location.state?.data;
 
-    console.log(data);
-    console.log((data as any)[0].route.arrivalCity);
+    const data = location.state?.data;
+    const dataSeats = location.state?.dataSeats;
 
     const arrivalCity = (data as any)[0].route.arrivalCity;
     const departureCity = (data as any)[0].route.departureCity;
     const arrival = (data as any)[0].route.arrival;
     const departure = (data as any)[0].route.departure;
+    const ticketPrice = (data as any)[0].ticketPrice;
 
+
+    const renderTickets = () => {
+        let result = [];
+        for (let datas of data) {
+            result.push(<TicketCard key={arrivalCity + departureCity + arrival} arrivalCity={arrivalCity} departureCity={departureCity} arrival={arrival} departure={departure} ticketPrice={ticketPrice} dataSeats={dataSeats} />)
+        }
+        console.log(result);
+        return result;
+    }
 
     return (
         <div className="flights-container">
@@ -34,9 +44,7 @@ const ChooseFlight = () => {
                 <SearchSort></SearchSort>
             </div>
             <div className="flights-container__card">
-                <TicketCard></TicketCard>
-                <TicketCard></TicketCard>
-                <TicketCard></TicketCard>
+                {renderTickets()}
             </div>
         </div>
     );

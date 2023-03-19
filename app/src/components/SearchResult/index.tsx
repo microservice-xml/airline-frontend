@@ -1,5 +1,7 @@
 import React from "react";
 import "./index.scss"
+import Moment from 'react-moment';
+
 
 type Props = {
     arrivalCity: string;
@@ -9,7 +11,9 @@ type Props = {
 }
 
 const SearchResult = ({ arrivalCity, departureCity, arrival, departure }: Props) => {
-    console.log(departure);
+
+    const dateToFormat = '1976-04-19T12:59-0500';
+
     return (
 
         <div className="search-result">
@@ -22,10 +26,10 @@ const SearchResult = ({ arrivalCity, departureCity, arrival, departure }: Props)
                 {arrivalCity}
             </div>
             <div className="search-result__dateFrom">
-                Fri, 20 Mar
+                <Moment format="MMM Do YY">{departure}</Moment>
             </div>
             <div className="search-result__dateTo">
-                Mon, 27 Mar
+                <Moment format="MMM Do YY">{arrival}</Moment>
             </div>
         </div >
     );

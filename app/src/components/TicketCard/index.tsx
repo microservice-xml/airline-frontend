@@ -1,7 +1,18 @@
 import React from "react";
 import "./index.scss";
+import Moment from "react-moment";
 
-const TicketCard = () => {
+type Props = {
+    arrivalCity: string;
+    departureCity: string;
+    arrival: Date;
+    departure: Date;
+    ticketPrice: number;
+    dataSeats: number;
+}
+
+const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPrice, dataSeats }: Props) => {
+
     return (
         <div className="card">
             <div className="card__top">
@@ -19,21 +30,25 @@ const TicketCard = () => {
             <div className="card__bottom">
                 <div className="card__bottom__left">
                     <div className="card__bottom__left__from">
-                        16:00h
+                        {departureCity}
+                        -
+                        <Moment format="h:mm:ss a">{departure}</Moment>
                     </div>
                     <div className="card__bottom__left__icon">
 
                     </div>
                     <div className="card__bottom__left__to">
-                        20:00h
+                        {arrivalCity}
+                        -
+                        <Moment format="h:mm:ss a">{arrival}</Moment>
                     </div>
                 </div>
                 <div className="card__bottom__right">
                     <div className="card__bottom__right__price">
-                        $72
+                        ${ticketPrice}
                     </div>
                     <div className="card__bottom__right__total-price">
-                        $144
+                        ${ticketPrice * dataSeats}
                     </div>
                     <div className="card__bottom__right__button-position">
                         <button className="card__bottom__right__button-style">Select</button>

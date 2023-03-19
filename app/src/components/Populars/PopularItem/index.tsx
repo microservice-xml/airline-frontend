@@ -1,6 +1,8 @@
 import "./index.scss";
 
-const PopularItem: React.FC<{ city: string; imgUrl: string }> = (props) => {
+const PopularItem: React.FC<{ city: string; imgUrl: string; key: string }> = (
+  props
+) => {
   return (
     <div className="popular-item">
       <div

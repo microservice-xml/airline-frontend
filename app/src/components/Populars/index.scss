@@ -28,7 +28,9 @@
     margin-top: 3%;
     display: flex;
     justify-content: flex-start;
+    flex-wrap: wrap;
     gap: 3%;
+    height: 100%;
   }
 }
 

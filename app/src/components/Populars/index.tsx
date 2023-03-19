@@ -1,7 +1,45 @@
+import { useState, useEffect } from "react";
+import ArticleItem from "../../model/Article";
+import { getAllArticles } from "../../services/news/newsService";
 import "./index.scss";
 import PopularItem from "./PopularItem";
-
+import cities from "../../constants/Cities";
 const Populars = () => {
+  const [articles, setArticles] = useState<ArticleItem[]>([]);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    let response: any;
+    response = await getAllArticles();
+    setArticles(response.data as ArticleItem[]);
+  };
+
+  const renderArticles = () => {
+    let result = [];
+
+    if (articles?.length === 0) {
+      return <div>There are no selected articles...</div>;
+    }
+
+    let i = 0;
+    for (let article of articles.slice(0, 6)) {
+      result.push(
+        <PopularItem
+          key={article.id}
+          imgUrl={require("../../assets/images/backgrounds/" +
+            article.slug +
+            ".jpg")}
+          city={cities.at(i)?.label || "Beograd"}
+        />
+      );
+      i++;
+    }
+    return result;
+  };
+
   return (
     <div className="populars">
       <div className="populars__header">
@@ -11,20 +49,7 @@ const Populars = () => {
           hotels, and car hire and join them on the adventure.
         </div>
       </div>
-      <div className="populars__cards">
-        <PopularItem
-          city="Beograd"
-          imgUrl="/static/media/group-travel-tips.6975d95e186c2080b0c0.jpg"
-        />
-        <PopularItem
-          city="Novi Sad"
-          imgUrl="/static/media/bucket-list-destinations.6aa4c47820c363881b76.jpg"
-        />
-        <PopularItem
-          city="Indjija"
-          imgUrl="/static/media/best-things-to-do-london.b73baf99c630c93870d3.jpg"
-        />
-      </div>
+      <div className="populars__cards">{renderArticles()}</div>
     </div>
   );
 };

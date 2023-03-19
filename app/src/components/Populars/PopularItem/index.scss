@@ -2,7 +2,7 @@
 
 .popular-item {
   width: 31%;
-  height: 40%;
+  height: 35%;
   border-radius: 2rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
@@ -15,20 +15,20 @@
   }
 
   &__text {
-    margin-top: 8%;
-    margin-left: 8%;
+    margin-left: 10%;
     display: flex;
+    justify-content: center;
     flex-direction: column;
     &--title {
       color: $color-black;
       font-weight: 600;
-      font-size: 2.2rem;
+      font-size: 2.5rem;
     }
     &__links {
       margin-top: 1rem;
       display: flex;
       flex-direction: row;
-      font-size: 1.5rem;
+      font-size: 2rem;
       color: blue;
       gap: 0.5rem;
       cursor: pointer;

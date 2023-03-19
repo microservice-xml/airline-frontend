@@ -1,0 +1,37 @@
+@import "../../../assets/styles/main.scss";
+
+.popular-item {
+  width: 33%;
+  height: 130px;
+  border-radius: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: row;
+
+  &__background {
+    width: 35%;
+    height: 100%;
+    border-radius: 2rem 0rem 0rem 2rem;
+  }
+
+  &__text {
+    margin-top: 8%;
+    margin-left: 8%;
+    display: flex;
+    flex-direction: column;
+    &--title {
+      color: $color-black;
+      font-weight: 600;
+      font-size: 2.2rem;
+    }
+    &__links {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: row;
+      font-size: 1.5rem;
+      color: blue;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+  }
+}

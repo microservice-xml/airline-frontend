@@ -41,6 +41,14 @@
     align-items: center;
     border-radius: 2rem;
   }
+
+  &__populars {
+    height: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media (max-width: 1450px) {

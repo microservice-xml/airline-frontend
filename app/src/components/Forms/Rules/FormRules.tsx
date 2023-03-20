@@ -7,6 +7,12 @@ const FormRules = {
   name: {
     required: { value: true, message: "Name is required" },
   },
+  firstName: {
+    required: { value: true, message: "First Name is required" },
+  },
+  lastName: {
+    required: { value: true, message: "Last Name is required" },
+  },
   email: {
     required: { value: true, message: "Email is required" },
     pattern: {
@@ -26,6 +32,13 @@ const FormRules = {
     pattern: {
       value: ValidationPatterns.PHONE,
       message: "Phone number must consist of numbers only",
+    },
+  },
+  passportNumber: {
+    required: { value: true, message: "Passport number is required" },
+    pattern: {
+      value: ValidationPatterns.PHONE,
+      message: "Passport number must consist of numbers only",
     },
   },
   jmbg: {

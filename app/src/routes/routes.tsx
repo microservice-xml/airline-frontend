@@ -3,6 +3,7 @@ import News from "../pages/news";
 import Blog from "../pages/blog";
 import LandingPage from "../pages/landing-page";
 import LoginPage from "../pages/login";
+import RegisterPage from "../pages/register";
 import ChooseFlight from "../pages/choose-flight";
 
 let unregisteredPages = {
@@ -25,7 +26,11 @@ let unregisteredPages = {
   ChooseFlight: {
     path: '/choose-flight',
     component: <ChooseFlight />
-  }
+  },
+  Register: {
+    path: "/register",
+    component: <RegisterPage />,
+  },
 };
 
 let ROUTES: any = {}
@@ -37,7 +42,11 @@ export function getRoutes() {
 
   for (const [key, value] of Object.entries(ROUTES)) {
     result.push(
-      <Route key={"route-" + key} path={(value as any).path} element={(value as any).component} />
+      <Route
+        key={"route-" + key}
+        path={(value as any).path}
+        element={(value as any).component}
+      />
     );
   }
 

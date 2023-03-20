@@ -4,7 +4,7 @@ import cities from "../../constants/Cities";
 import "./index.scss"
 import AutocompleteControl from "../FormComponents/AutocompleteControl";
 import DatePickerControl from "../FormComponents/DatePickerControl";
-import {useForm, FormProvider} from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import passengers from "../../constants/Passengers";
 import { getSearchValues } from "../../services/news/newsService";
 
@@ -14,26 +14,32 @@ const SearchComponent = () => {
     const navigate = useNavigate();
 
     const {
-        setValue, 
+        setValue,
         watch,
         register,
         control,
         handleSubmit,
-        formState: {errors}
+        formState: { errors }
     } = form
 
-    const onSubmit = async (dto : any) => {
+    const onSubmit = async (dto: any) => {
         console.log(dto);
         let obj = {
-            arrivalCity: dto.to.label,
-            departureCity: dto.from.label,
-            arrival: dto.arrival.toISOString().replace("23:00", "13:30").slice(0,19),
-            desiredSeats: dto.desiredSeats.value
+            departureCity: dto.from,
+            arrivalCity: dto.to,
+            departure: dto.departure.toISOString().slice(0, 10),
+            arrival: dto.arrival.toISOString().slice(0, 10),
+            desiredSeats: dto.desiredSeats.value,
         }
         console.log(obj);
         let response = await getSearchValues(obj)
         console.log(response.data);
-        navigate('/');
+        navigate('/choose-flight', {
+            state: {
+                data: response.data,
+                dataSeats: dto.desiredSeats.value,
+            }
+        });
     }
 
     return (
@@ -51,9 +57,9 @@ const SearchComponent = () => {
                     <DatePickerControl label={'Return'} helperText={'DD/MM/YYYY'} control={control} name={'arrival'}  customClass={"search__container-inputs--textbox grow"}/>
                     <AutocompleteControl name={'desiredSeats'} control={control} options={passengers} label={'Passengers'}  customClass={"search__container-inputs--textbox input-rounded-right"} iconPath={require('../../assets/images/icons/people1.png')} popperWidth={'15rem'} />
                 </div>
-                <button className="search__container-button" onClick={handleSubmit(onSubmit)}>Search</button>
-            </div>
-            </FormProvider>
+                    <button className="search__container-button" onClick={handleSubmit(onSubmit)}>Search</button>
+                </div>
+                </FormProvider>
         </div>
         </div>
     );

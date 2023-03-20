@@ -1,0 +1,26 @@
+@import '../../assets/styles/main.scss';
+
+.flights-container {
+    height: 100%;
+    width: 100%;
+
+    &__search-result {
+        height: 20%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__sort {
+        height: 30%;
+        width: 50%;
+        padding-left: 25%;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__card {
+        height: 50%;
+        width: 100%;
+        padding-left: 25%;
+    }
+}

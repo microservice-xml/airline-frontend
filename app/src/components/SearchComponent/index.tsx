@@ -4,7 +4,7 @@ import cities from "../../constants/Cities";
 import "./index.scss"
 import AutocompleteControl from "../FormComponents/AutocompleteControl";
 import DatePickerControl from "../FormComponents/DatePickerControl";
-import {useForm, FormProvider} from 'react-hook-form';
+import { useForm, FormProvider } from 'react-hook-form';
 import passengers from "../../constants/Passengers";
 import { getSearchValues } from "../../services/news/newsService";
 
@@ -14,46 +14,52 @@ const SearchComponent = () => {
     const navigate = useNavigate();
 
     const {
-        setValue, 
+        setValue,
         watch,
         register,
         control,
         handleSubmit,
-        formState: {errors}
+        formState: { errors }
     } = form
 
-    const onSubmit = async (dto : any) => {
+    const onSubmit = async (dto: any) => {
         console.log(dto);
         let obj = {
-            arrivalCity: dto.to,
             departureCity: dto.from,
-            arrival: dto.arrival.toISOString().replace("23:00", "13:30").slice(0,19),
-            desiredSeats: 2
+            arrivalCity: dto.to,
+            departure: dto.departure.toISOString().slice(0, 10),
+            arrival: dto.arrival.toISOString().slice(0, 10),
+            desiredSeats: dto.desiredSeats.value,
         }
         let response = await getSearchValues(obj)
         console.log(response.data);
-        navigate('/');
+        navigate('/choose-flight', {
+            state: {
+                data: response.data,
+                dataSeats: dto.desiredSeats.value,
+            }
+        });
     }
 
     return (
         <div className="search-container">
-        <div className="search">
-            <div className="search__title">
-                <h1> Quickly scan all your favourite travel sites </h1>
-            </div>
-            <FormProvider {...form}>
-            <div className="search__container">
-                <div className="search__container-inputs">
-                    <AutocompleteControl name={'from'} control={control} options={cities} label={'From'} customClass={"search__container-inputs--textbox input-rounded-left grow"} iconPath={require('../../assets/images/icons/airport-location.png')} popperWidth={'30rem'} defaultValue={{label : 'Belgrade'}}/>
-                    <AutocompleteControl name={'to'} control={control} options={cities} label={'To'} customClass={"search__container-inputs--textbox grow"} iconPath={require('../../assets/images/icons/airport-location.png')} popperWidth={'30rem'} defaultValue={{label : 'New York'}}/>
-                    <DatePickerControl label={'Depart'} helperText={'DD/MM/YYYY'} control={control} name={'departure'} />
-                    <DatePickerControl label={'Return'} helperText={'DD/MM/YYYY'} control={control} name={'arrival'}/>
-                    <AutocompleteControl name={'desiredSeats'} control={control} options={passengers} label={'Passengers'}  customClass={"search__container-inputs--textbox input-rounded-right"} iconPath={require('../../assets/images/icons/people1.png')} popperWidth={'15rem'} defaultValue={{label : '2 Adult'}}/>
+            <div className="search">
+                <div className="search__title">
+                    <h1> Quickly scan all your favourite travel sites </h1>
                 </div>
-                <button className="search__container-button" onClick={handleSubmit(onSubmit)}>Search</button>
+                <FormProvider {...form}>
+                    <div className="search__container">
+                        <div className="search__container-inputs">
+                            <AutocompleteControl name={'from'} control={control} options={cities} label={'From'} customClass={"search__container-inputs--textbox input-rounded-left grow"} iconPath={require('../../assets/images/icons/airport-location.png')} popperWidth={'30rem'} defaultValue={{ label: 'Belgrade' }} />
+                            <AutocompleteControl name={'to'} control={control} options={cities} label={'To'} customClass={"search__container-inputs--textbox grow"} iconPath={require('../../assets/images/icons/airport-location.png')} popperWidth={'30rem'} defaultValue={{ label: 'New York' }} />
+                            <DatePickerControl label={'Depart'} helperText={'DD/MM/YYYY'} control={control} name={'departure'} />
+                            <DatePickerControl label={'Return'} helperText={'DD/MM/YYYY'} control={control} name={'arrival'} />
+                            <AutocompleteControl name={'desiredSeats'} control={control} options={passengers} label={'Passengers'} customClass={"search__container-inputs--textbox input-rounded-right"} iconPath={require('../../assets/images/icons/people1.png')} popperWidth={'15rem'} defaultValue={{ label: '2 Adult' }} />
+                        </div>
+                        <button className="search__container-button" onClick={handleSubmit(onSubmit)}>Search</button>
+                    </div>
+                </FormProvider>
             </div>
-            </FormProvider>
-        </div>
         </div>
     );
 }

@@ -1,0 +1,126 @@
+@import '../../assets/styles/main.scss';
+
+.card {
+    height: 60%;
+    width: 50%;
+    border-radius: 1.3rem;
+    background-color: white;
+    margin-bottom: 3%;
+
+
+    &__top {
+        height: 35%;
+        background-color: #d0eeec;
+        border-radius: 1.3rem;
+        display: flex;
+
+        &__icon {
+            margin-top: 3%;
+            margin-left: 3%;
+            background-image: url('../../assets/images/icons/leaf.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 4rem;
+            width: 4rem;
+        }
+
+        &__field {
+
+            &__title {
+                font-size: 2.5rem;
+                margin-top: 1%;
+                margin-left: 3%;
+
+            }
+
+            &__text {
+                width: 100%;
+                font-size: 1.6rem;
+                margin-left: 3%;
+                margin-top: 1%;
+            }
+
+        }
+    }
+
+    &__bottom {
+
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+        &__left {
+            height: 100%;
+            width: 70%;
+            display: flex;
+            justify-content: space-between;
+            padding-top: 6.5%;
+
+
+
+            &__from {
+                margin-left: 5%;
+                font-size: 2rem;
+            }
+
+            &__icon {
+                background-image: url('../../assets/images/icons/plane.png');
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+                height: 4rem;
+                width: 4rem;
+            }
+
+            &__to {
+                margin-right: 5%;
+                font-size: 2rem;
+            }
+        }
+
+        &__right {
+            padding-right: 3%;
+            height: 100%;
+            width: 30%;
+            align-items: center;
+            text-align: center;
+
+            &__price {
+                margin-top: 4%;
+                font-size: 2.5rem;
+            }
+
+            &__total-price {
+                margin-top: 4%;
+                font-size: 1.6rem;
+            }
+
+            &__button-style {
+                margin-top: 4%;
+                font-size: 2.5rem;
+                background-color: #01a699;
+                color: white;
+                height: 4rem;
+                width: 10rem;
+                border: none;
+                border-radius: .5rem;
+                font-weight: 500;
+                transition: all .5s;
+
+                &:hover {
+                    cursor: pointer;
+                    background-color: #01897c;
+                    transition: all .5s;
+                }
+
+                // background-image: url('../../assets/images/icons/rightarrow.png');
+                // background-repeat: no-repeat;
+                // background-position: center;
+                // background-size: cover;
+            }
+        }
+    }
+
+
+}

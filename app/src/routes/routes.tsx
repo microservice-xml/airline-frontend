@@ -4,23 +4,28 @@ import Blog from "../pages/blog";
 import LandingPage from "../pages/landing-page";
 import LoginPage from "../pages/login";
 import RegisterPage from "../pages/register";
+import ChooseFlight from "../pages/choose-flight";
 
 let unregisteredPages = {
   News: {
-    path: "/news",
+    path: '/news',
     component: <News />,
   },
   Blog: {
-    path: "/news/:slug",
-    component: <Blog />,
+    path: '/news/:slug',
+    component: <Blog />
   },
   Landing: {
-    path: "/",
-    component: <LandingPage />,
+    path: '/',
+    component: <LandingPage />
   },
   Login: {
-    path: "/authenticate",
-    component: <LoginPage />,
+    path: '/authenticate',
+    component: <LoginPage />
+  },
+  ChooseFlight: {
+    path: '/choose-flight',
+    component: <ChooseFlight />
   },
   Register: {
     path: "/register",
@@ -28,7 +33,7 @@ let unregisteredPages = {
   },
 };
 
-let ROUTES: any = {};
+let ROUTES: any = {}
 
 Object.assign(ROUTES, ROUTES, unregisteredPages);
 

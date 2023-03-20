@@ -25,11 +25,12 @@ const SearchComponent = () => {
     const onSubmit = async (dto : any) => {
         console.log(dto);
         let obj = {
-            arrivalCity: dto.to,
-            departureCity: dto.from,
+            arrivalCity: dto.to.label,
+            departureCity: dto.from.label,
             arrival: dto.arrival.toISOString().replace("23:00", "13:30").slice(0,19),
-            desiredSeats: 2
+            desiredSeats: dto.desiredSeats.value
         }
+        console.log(obj);
         let response = await getSearchValues(obj)
         console.log(response.data);
         navigate('/');
@@ -46,9 +47,9 @@ const SearchComponent = () => {
                 <div className="search__container-inputs">
                     <AutocompleteControl name={'from'} control={control} options={cities} label={'From'} customClass={"search__container-inputs--textbox input-rounded-left grow"} iconPath={require('../../assets/images/icons/airport-location.png')} popperWidth={'30rem'} defaultValue={{label : 'Belgrade'}}/>
                     <AutocompleteControl name={'to'} control={control} options={cities} label={'To'} customClass={"search__container-inputs--textbox grow"} iconPath={require('../../assets/images/icons/airport-location.png')} popperWidth={'30rem'} defaultValue={{label : 'New York'}}/>
-                    <DatePickerControl label={'Depart'} helperText={'DD/MM/YYYY'} control={control} name={'departure'} />
-                    <DatePickerControl label={'Return'} helperText={'DD/MM/YYYY'} control={control} name={'arrival'}/>
-                    <AutocompleteControl name={'desiredSeats'} control={control} options={passengers} label={'Passengers'}  customClass={"search__container-inputs--textbox input-rounded-right"} iconPath={require('../../assets/images/icons/people1.png')} popperWidth={'15rem'} defaultValue={{label : '2 Adult'}}/>
+                    <DatePickerControl label={'Depart'} helperText={'DD/MM/YYYY'} control={control} name={'departure'}  customClass={"search__container-inputs--textbox grow"}/>
+                    <DatePickerControl label={'Return'} helperText={'DD/MM/YYYY'} control={control} name={'arrival'}  customClass={"search__container-inputs--textbox grow"}/>
+                    <AutocompleteControl name={'desiredSeats'} control={control} options={passengers} label={'Passengers'}  customClass={"search__container-inputs--textbox input-rounded-right"} iconPath={require('../../assets/images/icons/people1.png')} popperWidth={'15rem'} />
                 </div>
                 <button className="search__container-button" onClick={handleSubmit(onSubmit)}>Search</button>
             </div>

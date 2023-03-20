@@ -10,6 +10,7 @@ import {
   ErrorMessage,
   SuccesMessage,
 } from "../../../utils/toastService/toastService";
+import FormButton from "../../Button";
 
 const LoginForm = () => {
   const form = useForm();
@@ -71,12 +72,7 @@ const LoginForm = () => {
           />
         </div>
         <div className="form-wrapper__button">
-          <Button
-            onClick={handleSubmit(onSubmit)}
-            className={"form-wrapper__button--button"}
-          >
-            Submit
-          </Button>
+          <FormButton submitHandler={handleSubmit(onSubmit)} text={'submit'}/>
         </div>
         {errorMessage && (
           <span className="form-wrapper__link">{errorMessage}</span>

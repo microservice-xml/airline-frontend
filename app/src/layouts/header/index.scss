@@ -1,7 +1,9 @@
+@import '../../assets/styles/main.scss';
+
 .header {
   height: 10%;
   background-color: rgba(5, 32, 60, 1);
-  color: white;
+  color: $color-white;
   box-sizing: border-box;
   width: 100%;
   padding: 1%;
@@ -88,6 +90,19 @@
       transform: scale(1.05);
       transition: all 0.5s;
     }
+  }
+}
+
+.button-dims {
+  padding: 0.3rem 3rem !important;
+  box-sizing: border-box;
+  border: 2px solid transparent !important;
+  border-radius: 1rem !important;
+
+  &:hover {
+    background-color: $color-white !important;
+    border: 2px solid $button-color !important;
+    color: $button-color !important;
   }
 }
 

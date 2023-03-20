@@ -9,5 +9,6 @@ export default interface GenericProps {
     label: string,
     disabled? : boolean,
     placeholder? : string,
-    inputRef? : any
+    inputRef? : any,
+    customClass? : any;
 }

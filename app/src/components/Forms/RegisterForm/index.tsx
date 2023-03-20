@@ -9,6 +9,7 @@ import {
   SuccesMessage,
 } from "../../../utils/toastService/toastService";
 import { registerUser } from "../../../services/auth/authService";
+import FormButton from "../../Button";
 
 const RegisterForm = () => {
   const form = useForm();
@@ -127,12 +128,7 @@ const RegisterForm = () => {
           </div>
         </div>
         <div className="form-wrapper__button">
-          <Button
-            className={"form-wrapper__button--button"}
-            onClick={handleSubmit(onSubmit)}
-          >
-            Register
-          </Button>
+          <FormButton submitHandler={handleSubmit(onSubmit)} text={'register'} />
         </div>
       </FormProvider>
     </div>

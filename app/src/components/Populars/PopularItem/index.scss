@@ -4,7 +4,8 @@
   width: 31%;
   height: 35%;
   border-radius: 2rem;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  //box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: 0 1px 3px 0 rgba(37, 32, 31, .3);
   display: flex;
   flex-direction: row;
 
@@ -22,13 +23,13 @@
     &--title {
       color: $color-black;
       font-weight: 600;
-      font-size: 2.5rem;
+      font-size: 1.8rem;
     }
     &__links {
       margin-top: 1rem;
       display: flex;
       flex-direction: row;
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: blue;
       gap: 0.5rem;
       cursor: pointer;

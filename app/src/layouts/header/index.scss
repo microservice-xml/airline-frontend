@@ -65,23 +65,13 @@
         border-radius: 0.5rem;
         transition: all 0.5s;
 
-        &__logo--login {
-          background-image: url("../../assets/images/icons/user-large1.png");
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          height: 2.5rem;
-          width: 2.5rem;
-        }
-
-        &__logo--logout {
-          background-image: url("../../assets/images/icons/logout.png");
-          background-repeat: no-repeat;
-          background-position: center;
-          background-size: cover;
-          height: 2.5rem;
-          width: 2.5rem;
-        }
+                &__logo {
+                    background-repeat: no-repeat;
+                    background-position: center;
+                    background-size: cover;
+                    height: 2.5rem;
+                    width: 2.5rem;
+                }
 
         &__text {
           font-size: 1.6rem;

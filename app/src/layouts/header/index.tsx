@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { MouseEventHandler, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../store/login/AuthContext';
 import './index.scss'
+import NavButton from './navbutton';
 
 function Header() {
 
@@ -21,25 +22,11 @@ function Header() {
     }
 
     const getLoginButton = () => {
-        return (<div className={'header-main__options-login hover'} onClick={loginHandler}>
-                    <div className={'header-main__options-login__logo--login'}>
-
-                    </div>
-                    <div className={'header-main__options-login__text'} >
-                        Log in
-                    </div>
-                </div>)
+        return (<NavButton text='Log in' iconPath={require('../../assets/images/icons/user-large1.png')} handlerFunction={loginHandler} />)
     }
 
     const getLogoutButton = () => {
-        return (<div className={'header-main__options-login hover'} onClick={logoutHandler}>
-                    <div className={'header-main__options-login__logo--logout'}>
-
-                    </div>
-                    <div className={'header-main__options-login__text'} >
-                        Logout
-                    </div>
-                </div>)
+        return (<NavButton text='Logout' iconPath={require('../../assets/images/icons/logout.png')} handlerFunction={logoutHandler} />)
     }
 
     return (<div className={'header'}>
@@ -53,9 +40,7 @@ function Header() {
                 </div>
             </div>
             <div className={'header-main__options'}>
-                <div className={'header-main__options-about hover'}>
-                    About us
-                </div>
+                <NavButton text='About us' />
                 {context.isLoggedIn ? getLogoutButton() : getLoginButton()}
             </div>
         </div>

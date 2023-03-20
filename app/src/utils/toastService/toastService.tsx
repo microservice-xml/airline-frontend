@@ -23,7 +23,6 @@ export function WarningMessage (message: string) {
             draggable: true,
             progress: undefined,
             theme: "light",
-            
     });
 } 
 

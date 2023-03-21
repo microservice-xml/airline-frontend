@@ -14,17 +14,17 @@ const ChooseFlight = () => {
     const data = location.state?.data;
     const dataSeats = location.state?.dataSeats;
 
-    const arrivalCity = (data as any)[0].route.arrivalCity;
-    const departureCity = (data as any)[0].route.departureCity;
-    const arrival = (data as any)[0].route.arrival;
-    const departure = (data as any)[0].route.departure;
-    const ticketPrice = (data as any)[0].ticketPrice;
-
 
     const renderTickets = () => {
         let result = [];
-        for (let datas of data) {
-            result.push(<TicketCard key={arrivalCity + departureCity + arrival} arrivalCity={arrivalCity} departureCity={departureCity} arrival={arrival} departure={departure} ticketPrice={ticketPrice} dataSeats={dataSeats} />)
+        console.log(data);
+
+        if (!data || data.length === 0) {
+            return <p style={{fontSize: '3rem'}}>There are no flights available for your input.</p>
+        }
+
+        for (let item of data) {
+            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={dataSeats} />)
         }
         console.log(result);
         return result;
@@ -36,7 +36,7 @@ const ChooseFlight = () => {
 
             </div>
             <div className="flights-container__search-result">
-                <SearchResult arrivalCity={arrivalCity} departureCity={departureCity} arrival={arrival} departure={departure}></SearchResult>
+                <SearchResult arrivalCity={'London'} departureCity={'Belgrade'} arrival={new Date('2023-01-23')} departure={new Date('2023-01-23')}></SearchResult>
             </div>
             <div className="flights-container__sort">
                 <SearchSort></SearchSort>

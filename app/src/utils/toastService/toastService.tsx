@@ -10,6 +10,7 @@ export function SuccesMessage (message: string) {
             draggable: true,
             progress: undefined,
             theme: "light",
+            style: {fontSize: '1.6rem'}
     });
 };
 

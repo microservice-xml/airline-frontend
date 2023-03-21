@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import Article from "../../components/Article";
 import ArticleItem from "../../model/Article";
 import { getAllArticles } from "../../services/news/newsService";
+import useRouteProtector from "../../utils/routeProtector/routeProtector";
 import "./index.scss";
 
 function News() {
   const [articles, setArticles] = useState<ArticleItem[]>([]);
+  useRouteProtector({role: 'REGISTERED'});
 
   useEffect(() => {
     fetchData();

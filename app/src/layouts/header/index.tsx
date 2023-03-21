@@ -1,4 +1,4 @@
-import { MouseEventHandler, useContext } from 'react';
+import React, { MouseEventHandler, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import FormButton from '../../components/Button';
 import AuthContext from '../../store/login/AuthContext';
@@ -9,6 +9,8 @@ function Header() {
 
     const navigate = useNavigate();
     const context = useContext(AuthContext);
+    let role = context.user.role;
+    let isLoggedIn = context.isLoggedIn;
 
     const handleClick = () => {
         navigate('/')
@@ -20,10 +22,31 @@ function Header() {
 
     const logoutHandler = () => {
         context.logout();
+        navigate('/');
     }
 
     const registerHandler = () => {
         navigate('/register');
+    }
+
+    const getUserNavbar = () => {
+        return (<React.Fragment>
+            <NavButton text={'My Tickets'}/>
+        </React.Fragment>)
+    }
+
+    const getAdminNavbar = () => {
+        return (<React.Fragment>
+            <NavButton text={'Flights'}/>
+        </React.Fragment>)
+    }
+
+    const getLoggedButtons = () => {
+        return (<React.Fragment>
+            {!isLoggedIn ? <NavButton text='About us' /> : <NavButton text={'My Profile'} />}
+            {isLoggedIn ? getLogoutButton() : getLoginButton()}
+            {!isLoggedIn && getRegisterButton()}
+            </React.Fragment>)
     }
 
     const getLoginButton = () => {
@@ -49,9 +72,9 @@ function Header() {
                 </div>
             </div>
             <div className={'header-main__options'}>
-                <NavButton text='About us' />
-                {context.isLoggedIn ? getLogoutButton() : getLoginButton()}
-                {!context.isLoggedIn && getRegisterButton()}
+                {role === 'REGISTERED' && getUserNavbar()}
+                {role === 'ADMIN' && getUserNavbar()}
+                {getLoggedButtons()}
             </div>
         </div>
     </div>)

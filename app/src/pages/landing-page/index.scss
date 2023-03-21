@@ -61,3 +61,13 @@
     }
   }
 }
+
+@include respond(tablet) {
+  .landing {
+    &__cards {
+      &-container {
+        width: 90%;
+      }
+    }
+  }
+}

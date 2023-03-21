@@ -4,3 +4,9 @@
 @import './global';
 @import './typography';
 @import './mixins';
+
+@include respond(smallscreen) {
+    html {
+        font-size: 52.5%;
+    }
+}

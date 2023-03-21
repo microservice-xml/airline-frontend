@@ -80,8 +80,14 @@
   width: 18% !important;
 }
 
-@media (max-width: 1450px) {
+@include respond(smallscreen) {
   .search {
     width: 75%;
+  }
+}
+
+@include respond(tablet) {
+  .search {
+    width: 90%;
   }
 }

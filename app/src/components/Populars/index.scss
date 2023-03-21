@@ -34,8 +34,14 @@
   }
 }
 
-@media (max-width: 1450px) {
+@include respond(smallscreen) {
   .populars {
-    width: 75%;
+      width: 75%;
+    }
+}
+
+@include respond(tablet) {
+  .populars {
+    width: 90%;
   }
 }

@@ -4,10 +4,10 @@
         @media (max-width: 600px) { @content };
     }
     @if $breakpoint == tablet {
-        @media (max-width: 1000px) { @content };
+        @media (max-width: 1024px) { @content };
     }
     @if $breakpoint == smallscreen {
-        @media (max-width: 1450px) { @content };
+        @media (max-width: 1440px) { @content };
     }
     @if $breakpoint == wide-screen {
         @media (min-width: 2560px) { @content };

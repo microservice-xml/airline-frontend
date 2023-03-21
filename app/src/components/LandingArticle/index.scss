@@ -63,8 +63,14 @@
     }
 }
 
-@media (max-width: 1450px) {
+@include respond (smallscreen) {
     .landing-article {
         width: 75%;
+    }
+}
+
+@include respond (tablet) {
+    .landing-article {
+        width: 90%;
     }
 }

@@ -9,7 +9,4 @@ export async function getRandomArticle() {
   return await request("/news/random");
 }
 
-export async function getSearchValues(parameters: any) {
-  console.log("/flight/search" + makeParametersList(parameters));
-  return await request("/flight/search" + makeParametersList(parameters));
-}
+

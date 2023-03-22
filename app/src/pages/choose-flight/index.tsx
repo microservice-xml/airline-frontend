@@ -5,6 +5,7 @@ import SearchSort from "../../components/SearchSort";
 import TicketCard from "../../components/TicketCard";
 import "./index.scss"
 import { useLocation } from "react-router-dom";
+import { searchFlights } from "../../services/search/searchService";
 
 const ChooseFlight = () => {
 
@@ -12,19 +13,20 @@ const ChooseFlight = () => {
 
 
     const data = location.state?.data;
-    const dataSeats = location.state?.dataSeats;
 
+    let response = searchFlights(data)
+    console.log(response);
 
     const renderTickets = () => {
         let result = [];
         console.log(data);
 
         if (!data || data.length === 0) {
-            return <p style={{fontSize: '3rem'}}>There are no flights available for your input.</p>
+            return <p style={{ fontSize: '3rem' }}>There are no flights available for your input.</p>
         }
 
         for (let item of data) {
-            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={dataSeats} />)
+            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={item.dataSeats} />)
         }
         console.log(result);
         return result;

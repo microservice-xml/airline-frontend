@@ -17,7 +17,6 @@ const ChooseFlight = () => {
 
     const renderTickets = () => {
         let result = [];
-        console.log(data);
 
         if (!data || data.length === 0) {
             return <p style={{fontSize: '3rem'}}>There are no flights available for your input.</p>

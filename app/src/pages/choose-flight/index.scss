@@ -19,8 +19,9 @@
     }
 
     &__card {
-        height: 50%;
         width: 100%;
-        padding-left: 25%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

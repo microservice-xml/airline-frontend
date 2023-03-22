@@ -33,7 +33,7 @@ const SearchComponent = () => {
         }
         console.log(obj);
         let response = await getSearchValues(obj)
-        console.log(response.data);
+        console.log('Response', response.data);
         navigate('/choose-flight', {
             state: {
                 data: response.data,

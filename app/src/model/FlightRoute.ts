@@ -1,6 +1,8 @@
+import City from "./City";
+
 export default interface Section {
-    arrival: Date,
-    departure: Date,
-    arrivalCity: String,
-    departureCity: String,
+  arrival: Date;
+  departure: Date;
+  arrivalCity: City;
+  departureCity: City;
 }

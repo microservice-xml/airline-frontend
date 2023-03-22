@@ -14,7 +14,6 @@ const ChooseFlight = () => {
     const data = location.state?.data;
     const dataSeats = location.state?.dataSeats;
 
-
     const renderTickets = () => {
         let result = [];
 
@@ -23,7 +22,7 @@ const ChooseFlight = () => {
         }
 
         for (let item of data) {
-            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={dataSeats} />)
+            result.push(<TicketCard key={item.route.arrivalCity.name + item.route.departureCity.name + item.arrival} arrivalCity={item.route.arrivalCity} departureCity={item.route.departureCity} arrival={item.route.arrival} departure={item.route.departure} ticketPrice={item.ticketPrice} dataSeats={dataSeats} />)
         }
         console.log(result);
         return result;

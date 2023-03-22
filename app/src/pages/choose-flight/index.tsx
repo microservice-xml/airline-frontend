@@ -6,26 +6,35 @@ import TicketCard from "../../components/TicketCard";
 import "./index.scss"
 import { useLocation } from "react-router-dom";
 import { searchFlights } from "../../services/search/searchService";
+import SearchItem from "../../model/search/SearchResult";
 
 const ChooseFlight = () => {
 
     const location = useLocation();
-
+    const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
 
     const data = location.state?.data;
 
-    let response = searchFlights(data)
-    console.log(response);
+    useEffect(() => {
+        fetchData();
+    }, [])
+
+    const fetchData = async () => {
+        let response = await searchFlights(data)
+        setSearchResults(response.data as SearchItem[])
+    }
 
     const renderTickets = () => {
+        //console.log(searchResults);
         let result = [];
 
-        if (!data || data.length === 0) {
+        if (!searchResults || searchResults.length === 0) {
             return <p style={{ fontSize: '3rem' }}>There are no flights available for your input.</p>
         }
 
-        for (let item of data) {
-            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={item.dataSeats} />)
+        for (let item of searchResults) {
+            console.log(item);
+            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={item.desiredSeats} />)
         }
         console.log(result);
         return result;

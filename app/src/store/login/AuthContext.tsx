@@ -60,6 +60,7 @@ export const AuthContextProvider = (props : any) => {
         initialUser = retrieveUserFromToken(initialToken);
     }
 
+    console.log('INIT USER NAKON IFA: ', initialUser);
     const [token, setToken] = useState<string>(initialToken);
     const [user, setUser] = useState<User>(initialUser);
   
@@ -73,6 +74,7 @@ export const AuthContextProvider = (props : any) => {
 
         localStorage.setItem("token", token);
         localStorage.setItem('expires', expiresIn.toString() + '000');
+
         setToken(token)
         setUser(retrieveUserFromToken(token));
         logoutTimer = setTimeout(logoutHandler, remainingTime)

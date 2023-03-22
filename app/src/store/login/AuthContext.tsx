@@ -1,6 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import jwt from 'jwt-decode';
 import User from '../../model/auth/User';
+import { InfoMessage } from '../../utils/toastService/toastService';
 
 let logoutTimer : any;
 let initialToken : string = "";
@@ -31,9 +32,8 @@ const retrieveStoredToken = () => {
 const calculateRemainingTime = (expiresIn : any) => {
 
     const currentTime = new Date().getTime();
-    const expireTime = new Date().getTime() + +expiresIn;
 
-    const remainingTime = expireTime - currentTime;
+    const remainingTime = expiresIn - currentTime;
 
     return remainingTime;
 }
@@ -54,36 +54,25 @@ const retrieveUserFromToken = (token : string) => {
 export const AuthContextProvider = (props : any) => {
 
     const tokenData = retrieveStoredToken();
-    console.log(tokenData); // null
-    let flag = false;
 
     if (tokenData !== null) {
         initialToken = tokenData.token as string;
         initialUser = retrieveUserFromToken(initialToken);
     }
 
-    console.log('INIT USER NAKON IFA: ', initialUser);
     const [token, setToken] = useState<string>(initialToken);
     const [user, setUser] = useState<User>(initialUser);
-
-    console.log('Token', token);
-    console.log('User', user);
-
-    if (initialUser.email !== user.email) {
-        flag = true;
-    }
-
   
     const userIsLoggedIn = !!token;
 
     const loginHandler = (token : string) => {
         let decodedToken = jwt(token)
-        let expiresIn = +(decodedToken as any).exp;
+        let expiresIn = (decodedToken as any).exp;
 
         const remainingTime = calculateRemainingTime(expiresIn)
 
         localStorage.setItem("token", token);
-        localStorage.setItem('expires', expiresIn.toString())
+        localStorage.setItem('expires', expiresIn.toString() + '000');
         setToken(token)
         setUser(retrieveUserFromToken(token));
         logoutTimer = setTimeout(logoutHandler, remainingTime)
@@ -94,6 +83,8 @@ export const AuthContextProvider = (props : any) => {
         setUser({ email: "", id: "", role: ""})
         localStorage.removeItem('token');
         localStorage.removeItem('expires');
+
+        InfoMessage('Goodbye!');
 
         if (logoutTimer) {
             clearTimeout(logoutTimer);

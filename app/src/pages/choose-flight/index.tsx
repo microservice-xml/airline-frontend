@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import SearchResult from "../../components/SearchResult";
-import SearchSort from "../../components/SearchSort";
 import TicketCard from "../../components/TicketCard";
 import "./index.scss"
 import { useLocation } from "react-router-dom";
@@ -42,7 +41,6 @@ const ChooseFlight = () => {
 
         for (let item of searchResults) {
             result.push(<TicketCard key={item.id} arrivalCity={item.route.arrivalCity.name} departureCity={item.route.departureCity.name} arrival={item.route.arrival} departure={item.route.departure} ticketPrice={item.ticketPrice} dataSeats={data.desiredSeats} />)
-            // console.log(result);
         }
         return result;
     }
@@ -53,11 +51,6 @@ const ChooseFlight = () => {
             </div>
             <div className="flights-container__search-result">
                 <SearchResult arrivalCity={data.arrivalCity} departureCity={data.departureCity} arrival={data.arrival} departure={data.departure}></SearchResult>
-            </div>
-            <div className="flights-container__sort">
-                <SearchSort></SearchSort>
-                <SearchSort></SearchSort>
-                <SearchSort></SearchSort>
             </div>
             <div className="flights-container__card">
                 {renderTickets()}

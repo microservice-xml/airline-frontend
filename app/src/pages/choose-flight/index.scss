@@ -28,22 +28,25 @@
 
 .noFlights-container {
     height: 100%;
-    width: 50%;
+    width: 100%;
 
     &__text {
+        height: 30%;
+        width: 100%;
         font-size: 3.5rem;
         display: flex;
-        justify-content: left;
-        padding-left: 2%;
+        justify-content: center;
         margin-bottom: 4%;
     }
 
     &__image {
-        height: 100%;
-        width: 100%;
+        margin-left: 20%;
         background-image: url('../../assets/images/backgrounds/sad-airplane.jpg');
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
+        height: 50rem;
+        width: 60%;
+
     }
 }

@@ -10,51 +10,56 @@ import NotFoundPage from "../pages/error/404";
 import { useContext } from "react";
 import AuthContext from "../store/login/AuthContext";
 import UnauthorizedPage from "../pages/error/401";
+import CreateFlight from "../pages/flight/create-flight";
 
 let unregisteredPages = {
   News: {
-    path: '/news',
-    component: <News />
+    path: "/news",
+    component: <News />,
   },
   Blog: {
-    path: '/news/:slug',
-    component: <Blog />
+    path: "/news/:slug",
+    component: <Blog />,
   },
   Landing: {
-    path: '/',
-    component: <LandingPage />
+    path: "/",
+    component: <LandingPage />,
   },
   Login: {
-    path: '/authenticate',
-    component: <LoginPage />
+    path: "/authenticate",
+    component: <LoginPage />,
   },
   ChooseFlight: {
-    path: '/choose-flight',
-    component: <ChooseFlight />
+    path: "/choose-flight",
+    component: <ChooseFlight />,
   },
   Register: {
     path: "/register",
     component: <RegisterPage />,
   },
+  CreateFlight: {
+    path: "/add-flight",
+    component: <CreateFlight />,
+  },
   Forbidden: {
     path: "/403",
-    component: <ForbiddenPage />
+    component: <ForbiddenPage />,
   },
   NotFound: {
-    path: '/404',
-    component: <NotFoundPage />
+    path: "/404",
+    component: <NotFoundPage />,
   },
   Unauthorized: {
-    path: '/401',
-    component: <UnauthorizedPage />
+    path: "/401",
+    component: <UnauthorizedPage />,
   },
   Redirect: {
-    path: '*',
-    component: <Navigate to='/404'/>
-  }
+    path: "*",
+    component: <Navigate to="/404" />,
+  },
 };
 
-let ROUTES: any = {}
+let ROUTES: any = {};
 
 Object.assign(ROUTES, ROUTES, unregisteredPages);
 

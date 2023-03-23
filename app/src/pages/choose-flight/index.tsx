@@ -40,7 +40,7 @@ const ChooseFlight = () => {
         }
 
         for (let item of searchResults) {
-            result.push(<TicketCard key={item.id} arrivalCity={item.route.arrivalCity.name} departureCity={item.route.departureCity.name} arrival={item.route.arrival} departure={item.route.departure} ticketPrice={item.ticketPrice} dataSeats={data.desiredSeats} />)
+            result.push(<TicketCard key={item.id} arrivalCity={item.route.arrivalCity} departureCity={item.route.departureCity} arrival={item.route.arrival} departure={item.route.departure} ticketPrice={item.ticketPrice} dataSeats={data.desiredSeats} />)
         }
         return result;
     }

@@ -5,8 +5,8 @@ import City from "../../model/City";
 
 
 type Props = {
-    arrivalCity: any;
-    departureCity: any;
+    arrivalCity: City;
+    departureCity: City;
     arrival: Date;
     departure: Date;
     ticketPrice: number;
@@ -43,7 +43,7 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
                     <div className="card__bottom__left__from">
                         <div className="city">
                             <div className="city__name">
-                                {departureCity}
+                                {departureCity.name}
                             </div>
                             <div className="city__airport">
                                 {departureCity.airport} ({departureCity.iata_code})
@@ -57,7 +57,7 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
                     <div className="card__bottom__left__to">
                         <div className="city">
                             <div className="city__name">
-                                {arrivalCity}
+                                {arrivalCity.name}
                             </div>
                             <div className="city__airport">
                                 {arrivalCity.airport} ({arrivalCity.iata_code})

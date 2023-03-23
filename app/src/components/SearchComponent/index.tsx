@@ -23,6 +23,7 @@ const SearchComponent = () => {
     } = form
 
     const onSubmit = async (dto: any) => {
+        //  console.log(dto);
         let obj = {
             departureCity: dto.from.label,
             arrivalCity: dto.to.label,
@@ -31,9 +32,10 @@ const SearchComponent = () => {
             desiredSeats: dto.desiredSeats.value,
         }
 
+        console.log(obj);
         navigate('/choose-flight', {
             state: {
-                data: obj
+                data: obj,
             }
         });
     }

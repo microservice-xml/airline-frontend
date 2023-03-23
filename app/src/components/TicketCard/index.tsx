@@ -5,8 +5,8 @@ import City from "../../model/City";
 
 
 type Props = {
-    arrivalCity: City;
-    departureCity: City;
+    arrivalCity: any;
+    departureCity: any;
     arrival: Date;
     departure: Date;
     ticketPrice: number;
@@ -15,16 +15,13 @@ type Props = {
 
 const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPrice, dataSeats }: Props) => {
 
-    console.log(arrivalCity);
-    console.log(departureCity);
-
     const getRandomNumber = () => {
-        const i = Math.random()*10;
+        const i = Math.random() * 10;
         return i >= 1 && i <= 4;
     }
 
     const getRandomValue = () => {
-        return Math.round(Math.random()*100*0.5)
+        return Math.round(Math.random() * 100 * 0.5)
     }
 
     return (
@@ -46,7 +43,7 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
                     <div className="card__bottom__left__from">
                         <div className="city">
                             <div className="city__name">
-                                {departureCity.name}
+                                {departureCity}
                             </div>
                             <div className="city__airport">
                                 {departureCity.airport} ({departureCity.iata_code})
@@ -60,13 +57,13 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
                     <div className="card__bottom__left__to">
                         <div className="city">
                             <div className="city__name">
-                                {arrivalCity.name}
+                                {arrivalCity}
                             </div>
                             <div className="city__airport">
                                 {arrivalCity.airport} ({arrivalCity.iata_code})
                             </div>
                         </div>
-                        <span className="time"><Moment format="hh:mm a" className="time" style={{color: '#444444', fontWeight: '550'}}>{arrival}</Moment></span>
+                        <span className="time"><Moment format="hh:mm a" className="time" style={{ color: '#444444', fontWeight: '550' }}>{arrival}</Moment></span>
                     </div>
                 </div>
                 <div className="card__bottom__right">

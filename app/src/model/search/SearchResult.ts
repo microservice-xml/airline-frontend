@@ -1,11 +1,8 @@
-import City from "..//City"
+import FlightRoute from "../FlightRoute"
 
 export default interface SearchItem {
     id: string;
-    departureCity: City;
-    arrivalCity: City;
-    departure: Date;
-    arrival: Date;
+    route: FlightRoute;
     ticketPrice: number;
     desiredSeats: number;
 }

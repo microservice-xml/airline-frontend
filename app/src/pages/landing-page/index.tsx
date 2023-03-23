@@ -3,6 +3,7 @@ import InfoCard from "../../components/InfoCard";
 import LandingArticle from "../../components/LandingArticle";
 import Populars from "../../components/Populars";
 import SearchComponent from "../../components/SearchComponent";
+import Footer from "../../layouts/footer";
 import "./index.scss";
 
 const LandingPage = () => {
@@ -38,6 +39,9 @@ const LandingPage = () => {
       </div>
       <div className="landing__accordion">
         <AccordionLanding />
+      </div>
+      <div className="landing__footer">
+        <Footer />
       </div>
     </div>
   );

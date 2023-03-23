@@ -25,6 +25,7 @@ const ChooseFlight = () => {
         setSearchResults(response.data as SearchItem[])
     }
 
+
     const renderTickets = () => {
         let result = [];
 
@@ -42,7 +43,8 @@ const ChooseFlight = () => {
         }
 
         for (let item of searchResults) {
-            result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={item.desiredSeats} />)
+            result.push(<TicketCard key={item.ticketPrice + item.desiredSeats} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={item.desiredSeats} />)
+
         }
         return result;
     }

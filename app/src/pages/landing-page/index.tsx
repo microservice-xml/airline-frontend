@@ -1,3 +1,4 @@
+import AccordionLanding from "../../components/Accordion";
 import InfoCard from "../../components/InfoCard";
 import LandingArticle from "../../components/LandingArticle";
 import Populars from "../../components/Populars";
@@ -34,6 +35,9 @@ const LandingPage = () => {
       </div>
       <div className="landing__populars">
         <Populars />
+      </div>
+      <div className="landing__accordion">
+        <AccordionLanding />
       </div>
     </div>
   );

@@ -24,3 +24,25 @@
         padding-left: 25%;
     }
 }
+
+.noFlights-container {
+    height: 100%;
+    width: 50%;
+
+    &__text {
+        font-size: 3.5rem;
+        display: flex;
+        justify-content: left;
+        padding-left: 2%;
+        margin-bottom: 4%;
+    }
+
+    &__image {
+        height: 100%;
+        width: 100%;
+        background-image: url('../../assets/images/backgrounds/sad-airplane.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+    }
+}

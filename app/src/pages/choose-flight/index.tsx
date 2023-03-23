@@ -14,10 +14,11 @@ const ChooseFlight = () => {
     const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
 
     const data = location.state?.data;
+    let temp = true;
 
     useEffect(() => {
         fetchData();
-    }, [])
+    }, []);
 
     const fetchData = async () => {
         let response = await searchFlights(data)
@@ -25,39 +26,57 @@ const ChooseFlight = () => {
     }
 
     const renderTickets = () => {
-        //console.log(searchResults);
         let result = [];
 
         if (!searchResults || searchResults.length === 0) {
-            return <p style={{ fontSize: '3rem' }}>There are no flights available for your input.</p>
+            temp = false;
+            return (
+                <div className="noFlights-container">
+                    <div className="noFlights-container__text">
+                        Sorry, there are no flights available for your input.
+                    </div>
+                    <div className="noFlights-container__image">
+                    </div>
+                </div>
+            );
         }
 
         for (let item of searchResults) {
-            console.log(item);
             result.push(<TicketCard key={item.arrivalCity + item.departureCity + item.arrival} arrivalCity={item.arrivalCity} departureCity={item.departureCity} arrival={item.arrival} departure={item.departure} ticketPrice={item.ticketPrice} dataSeats={item.desiredSeats} />)
         }
-        console.log(result);
         return result;
     }
 
-    return (
-        <div className="flights-container">
-            <div>
+    if (temp === Boolean(true)) {
+        return (
+            <div className="flights-container">
+                <div>
+                </div>
+                <div className="flights-container__search-result">
+                    <SearchResult arrivalCity={'London'} departureCity={'Belgrade'} arrival={new Date('2023-01-23')} departure={new Date('2023-01-23')}></SearchResult>
+                </div>
+                <div className="flights-container__sort">
+                    <SearchSort></SearchSort>
+                    <SearchSort></SearchSort>
+                    <SearchSort></SearchSort>
+                </div>
+                <div className="flights-container__card">
+                    {renderTickets()}
+                </div>
+            </div>
+        );
 
+    } else {
+        return (
+            <div className="flights-container">
+                <div>
+                </div>
+                <div className="flights-container__search-result">
+                    <SearchResult arrivalCity={'London'} departureCity={'Belgrade'} arrival={new Date('2023-01-23')} departure={new Date('2023-01-23')}></SearchResult>
+                </div>
             </div>
-            <div className="flights-container__search-result">
-                <SearchResult arrivalCity={'London'} departureCity={'Belgrade'} arrival={new Date('2023-01-23')} departure={new Date('2023-01-23')}></SearchResult>
-            </div>
-            <div className="flights-container__sort">
-                <SearchSort></SearchSort>
-                <SearchSort></SearchSort>
-                <SearchSort></SearchSort>
-            </div>
-            <div className="flights-container__card">
-                {renderTickets()}
-            </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default ChooseFlight;

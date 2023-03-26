@@ -10,6 +10,7 @@ import NotFoundPage from "../pages/error/404";
 import { useContext } from "react";
 import AuthContext from "../store/login/AuthContext";
 import UnauthorizedPage from "../pages/error/401";
+import MyTicketsPage from "../pages/my-tickets";
 
 let unregisteredPages = {
   News: {
@@ -51,6 +52,10 @@ let unregisteredPages = {
   Redirect: {
     path: '*',
     component: <Navigate to='/404'/>
+  },
+  MyTickets: {
+    path: '/my-tickets',
+    component: <MyTicketsPage />
   }
 };
 

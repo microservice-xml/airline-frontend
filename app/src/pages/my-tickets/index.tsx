@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import TicketCard from "../../components/TicketCard";
 import { getAllTicketByUser } from "../../services/tickets/ticketsService";
 import AuthContext from "../../store/login/AuthContext";
+import "./index.scss"
 
 const MyTicketsPage = () => {
 
@@ -19,8 +20,7 @@ const MyTicketsPage = () => {
   };
 
   return (
-    <div>
-      This is the My Tickets Page.
+    <div className="my-tickets-container">
       {tickets.map((t: any) => {
         return (<TicketCard arrivalCity={t.flight.route.arrivalCity} departureCity={t.flight.route.departureCity} arrival={t.flight.route.arrival} departure={t.flight.route.departure} ticketPrice={t.payedPrice} dataSeats={1} flightId={""} canPurchase={false}/>);
       })}

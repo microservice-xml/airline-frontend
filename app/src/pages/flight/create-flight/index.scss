@@ -1,3 +1,5 @@
+@import "../../../assets/styles/main.scss";
+
 .add-flight-page {
   display: flex;
   justify-content: center;
@@ -14,3 +16,13 @@
     height: 75%;
   }
 }
+
+// @include respond(smallscreen) {
+//   .add-flight-page {
+//     height: 100%;
+//     &__form-container {
+//       width: 75%;
+//       height: 60%;
+//     }
+//   }
+// }

@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 5rem;
+  gap: 5%;
 
   &__header {
     font-weight: 600;
@@ -28,7 +28,7 @@
     gap: 25%;
 
     &--item {
-      margin-top: 5%;
+      margin-top: 10%;
       width: 90%;
       height: 100%;
     }
@@ -45,7 +45,7 @@
       }
 
       &--field {
-        width: 100%;
+        width: 90%;
       }
     }
   }
@@ -72,7 +72,7 @@
       height: 100%;
       width: 25%;
       background-color: #fff;
-      padding: 2rem;
+      padding: 2% 5% 5% 5%;
       border-radius: 3rem;
       box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
         rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
@@ -81,5 +81,11 @@
         width: 100%;
       }
     }
+  }
+}
+
+@include respond(smallscreen) {
+  .accordion {
+    width: 75%;
   }
 }

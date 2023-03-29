@@ -25,9 +25,6 @@ const AddFlight = () => {
       <FormProvider {...form}>
         <div className="wrapper__row">
           <div className="wrapper__row__item">
-            {/* <label className="wrapper__row__item--label">
-              Number of seats:
-            </label> */}
             <div className="wrapper__row__item--field">
               <TextFieldControl
                 label={"Number of seats"}
@@ -43,7 +40,6 @@ const AddFlight = () => {
             </div>
           </div>
           <div className="wrapper__row__item">
-            {/* <label className="wrapper__row__item--label">Ticket price:</label> */}
             <div className="wrapper__row__item--field">
               <TextFieldControl
                 label={"Ticket price"}
@@ -67,7 +63,6 @@ const AddFlight = () => {
                 control={control}
                 options={cities}
                 label={"From"}
-                // customClass={"wrapper__container__elem--combo"}
                 iconPath={require("../../../assets/images/icons/airport-location.png")}
                 popperWidth={"30rem"}
                 defaultValue={"Belgrade"}
@@ -78,7 +73,6 @@ const AddFlight = () => {
               helperText={"DD/MM/YYYY"}
               control={control}
               name={"departure"}
-              // customClass={"search__container-inputs--textbox grow"}
             />
           </div>
           <div className="wrapper__container--icon"></div>
@@ -89,7 +83,6 @@ const AddFlight = () => {
                 control={control}
                 options={cities}
                 label={"To"}
-                // customClass={"search__container-inputs--textbox grow"}
                 iconPath={require("../../../assets/images/icons/airport-location.png")}
                 popperWidth={"30rem"}
                 defaultValue={"New York"}
@@ -100,7 +93,6 @@ const AddFlight = () => {
               helperText={"DD/MM/YYYY"}
               control={control}
               name={"arrival"}
-              // customClass={"search__container-inputs--textbox grow"}
             />
           </div>
         </div>

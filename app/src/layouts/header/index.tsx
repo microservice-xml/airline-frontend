@@ -31,7 +31,7 @@ function Header() {
 
     const getUserNavbar = () => {
         return (<React.Fragment>
-            <NavButton text={'My Tickets'}/>
+            <NavButton text={'My Tickets'} handlerFunction={() => navigate("/my-tickets")}/>
         </React.Fragment>)
     }
 

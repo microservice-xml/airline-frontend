@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./index.scss";
 import Moment from "react-moment";
 import City from "../../model/City";
+import AuthContext from "../../store/login/AuthContext";
+import { purchaseTicket } from "../../services/tickets/ticketsService";
 
 
 type Props = {
@@ -11,9 +13,16 @@ type Props = {
     departure: Date;
     ticketPrice: number;
     dataSeats: number;
+    flightId: string;
+    canPurchase: boolean;
 }
 
-const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPrice, dataSeats }: Props) => {
+const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPrice, dataSeats, flightId, canPurchase }: Props) => {
+
+    console.log(arrivalCity);
+    console.log(departureCity);
+
+    const context = useContext(AuthContext);
 
     const getRandomNumber = () => {
         const i = Math.random() * 10;
@@ -24,9 +33,20 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
         return Math.round(Math.random() * 100 * 0.5)
     }
 
+    const sendPurchaseTicketsRequest = async () => {
+        const purchaseTicketDto: any = {
+            userId: context.user.id,
+            flightId: flightId,
+            payedPrice: ticketPrice,
+            count: dataSeats
+        };
+        console.log(purchaseTicketDto);
+        await purchaseTicket(purchaseTicketDto);
+    };
+
     return (
         <div className="card">
-            {getRandomNumber() && <div className="card__top">
+            {canPurchase && getRandomNumber() && <div className="card__top">
                 <div className="card__top__icon">
                 </div>
                 <div className="card_top__field">
@@ -70,12 +90,15 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
                     <div className="card__bottom__right__price">
                         ${ticketPrice * dataSeats}
                     </div>
-                    <div className="card__bottom__right__total-price">
-                        ${ticketPrice} per person
-                    </div>
-                    <div className="card__bottom__right__button-position">
-                        <button className="card__bottom__right__button-style">Select</button>
-                    </div>
+                    {canPurchase && 
+                    <>
+                        <div className="card__bottom__right__total-price">
+                            ${ticketPrice} per person
+                        </div>
+                        <div className="card__bottom__right__button-position">
+                            <button className="card__bottom__right__button-style" onClick={sendPurchaseTicketsRequest}>Select</button>
+                        </div>
+                    </>}
                 </div>
             </div>
         </div>

@@ -31,6 +31,7 @@ const ChooseFlight = () => {
     }
 
     const renderTickets = () => {
+        
         let result = [];
 
         if (!searchResults || searchResults.length === 0) {
@@ -45,8 +46,9 @@ const ChooseFlight = () => {
             );
         }
 
-        for (let item of searchResults) {
-            result.push(<TicketCard key={item.id} arrivalCity={item.route.arrivalCity} departureCity={item.route.departureCity} arrival={item.route.arrival} departure={item.route.departure} ticketPrice={item.ticketPrice} dataSeats={data.desiredSeats} />)
+        for (let item of data) {
+            console.log(item);
+            result.push(<TicketCard key={item.route.arrivalCity.name + item.route.departureCity.name + item.arrival} arrivalCity={item.route.arrivalCity} departureCity={item.route.departureCity} arrival={item.route.arrival} departure={item.route.departure} ticketPrice={item.ticketPrice} dataSeats={dataSeats} flightId={item.id} canPurchase={true}/>)
         }
         return result;
     }

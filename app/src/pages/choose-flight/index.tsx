@@ -14,7 +14,6 @@ const ChooseFlight = () => {
   const [showSearchBar, setShowSearchBar] = useState<Boolean>(false);
 
   const data = location.state?.data;
-  console.log(data);
 
   useEffect(() => {
     fetchData();
@@ -43,21 +42,17 @@ const ChooseFlight = () => {
       );
     }
 
-    for (let item of data) {
-      console.log(item);
+    for (let item of searchResults) {
+      console.log(searchResults);
       result.push(
         <TicketCard
-          key={
-            item.route.arrivalCity.name +
-            item.route.departureCity.name +
-            item.arrival
-          }
+          key={item.id}
           arrivalCity={item.route.arrivalCity}
           departureCity={item.route.departureCity}
           arrival={item.route.arrival}
           departure={item.route.departure}
           ticketPrice={item.ticketPrice}
-          dataSeats={item.dataSeats}
+          dataSeats={data.desiredSeats}
           flightId={item.id}
           canPurchase={true}
         />

@@ -5,6 +5,13 @@
   width: 60%;
   background-color: transparent;
   font-size: 2rem;
+
+  &__header {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 4rem;
+    font-family: "Open Sans";
+  }
 }
 
 .MuiTypography-root {

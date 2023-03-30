@@ -3,7 +3,6 @@ import { FormProvider, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import FormRules from "../Rules/FormRules";
 import TextFieldControl from "../../FormComponents/TextFieldControl";
-import { Button } from "@mui/material";
 import {
   ErrorMessage,
   SuccesMessage,
@@ -23,7 +22,6 @@ const RegisterForm = () => {
 
   const onSubmit = async (dto: any) => {
     dto.role = "REGISTERED";
-
     let response: any;
     response = await registerUser(dto);
     if (!response || !response.ok) {
@@ -128,7 +126,10 @@ const RegisterForm = () => {
           </div>
         </div>
         <div className="form-wrapper__button">
-          <FormButton submitHandler={handleSubmit(onSubmit)} text={'register'} />
+          <FormButton
+            submitHandler={handleSubmit(onSubmit)}
+            text={"register"}
+          />
         </div>
       </FormProvider>
     </div>

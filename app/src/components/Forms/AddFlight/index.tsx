@@ -4,11 +4,22 @@ import AutocompleteControl from "../../FormComponents/AutocompleteControl";
 import DatePickerControl from "../../FormComponents/DatePickerControl";
 import FormRules from "../Rules/FormRules";
 import "./index.scss";
-import cities from "../../../constants/Cities";
 import FormButton from "../../Button";
+import { useEffect, useState } from "react";
+import { getAll } from "./../../../services/city/cityService";
+import {
+  ErrorMessage,
+  SuccesMessage,
+} from "../../../utils/toastService/toastService";
+import TimePickerControl from "../../FormComponents/TimePickerControl";
+import { useNavigate } from "react-router-dom";
+import { createFlight } from "../../../services/flight/flightService";
 
 const AddFlight = () => {
   const form = useForm();
+  const [cities, setData] = useState([]);
+
+  const navigate = useNavigate();
 
   const {
     control,
@@ -16,9 +27,49 @@ const AddFlight = () => {
     formState: { errors },
   } = form;
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getAll();
+      if (!response || !response.ok) {
+        ErrorMessage("Oops! Something went wrong. Please try again later.");
+        return;
+      }
+
+      let tmp = [];
+      for (let i of response.data) {
+        tmp.push({ label: i.name + " (" + i.iata_code + ")" });
+      }
+      setData(tmp as any);
+    }
+    fetchData();
+  }, []);
+
+  const onSubmit = async (dto: any) => {
+    let obj = {
+      departureCity: dto.from.label,
+      arrivalCity: dto.to.label,
+      departure:
+        dto.departure.toISOString().slice(0, 10) +
+        dto.departTime.toISOString().slice(10, 19),
+      arrival:
+        dto.arrival.toISOString().slice(0, 10) +
+        dto.arrivalTime.toISOString().slice(10, 19),
+      numSeats: Number(dto.numSeats),
+      price: Number(dto.price),
+      desc: dto.describe,
+    };
+
+    let response: any;
+    response = await createFlight(obj);
+    if (!response || !response.ok) {
+      ErrorMessage("Ooops.Something went wrong. Please try again later.");
+      return;
+    }
+
+    SuccesMessage("Congratulations! Flight has been successfully created.");
+    navigate("/");
   };
+
   return (
     <div className="wrapper">
       <div className="wrapper__header">Create new flight</div>
@@ -70,10 +121,26 @@ const AddFlight = () => {
             </div>
             <DatePickerControl
               label={"Depart"}
-              helperText={"DD/MM/YYYY"}
+              rules={FormRules["required"]}
+              error={Boolean(errors.required)}
+              helperText={
+                errors.required && (errors.required.message as string)
+              }
               control={control}
               name={"departure"}
             />
+            <div className="wrapper__row_item-field">
+              <TimePickerControl
+                label="Time"
+                control={control}
+                name={"departTime"}
+                rules={FormRules["required"]}
+                error={Boolean(errors.required)}
+                helperText={
+                  errors.required && (errors.required.message as string)
+                }
+              />
+            </div>
           </div>
           <div className="wrapper__container--icon"></div>
           <div className="wrapper__container__elem">
@@ -86,14 +153,35 @@ const AddFlight = () => {
                 iconPath={require("../../../assets/images/icons/airport-location.png")}
                 popperWidth={"30rem"}
                 defaultValue={"New York"}
+                rules={FormRules["required"]}
+                error={Boolean(errors.required)}
+                helperText={
+                  errors.required && (errors.required.message as string)
+                }
               />
             </div>
             <DatePickerControl
               label={"Return"}
-              helperText={"DD/MM/YYYY"}
               control={control}
               name={"arrival"}
+              rules={FormRules["required"]}
+              error={Boolean(errors.required)}
+              helperText={
+                errors.required && (errors.required.message as string)
+              }
             />
+            <div className="wrapper__row_item-field">
+              <TimePickerControl
+                label="Time"
+                control={control}
+                name={"arrivalTime"}
+                rules={FormRules["required"]}
+                error={Boolean(errors.required)}
+                helperText={
+                  errors.required && (errors.required.message as string)
+                }
+              />
+            </div>
           </div>
         </div>
         <div className="wrapper__row">

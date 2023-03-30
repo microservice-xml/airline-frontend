@@ -1,18 +1,18 @@
-import React, {useState, useEffect, useCallback} from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import jwt from 'jwt-decode';
 import User from '../../model/auth/User';
 import { InfoMessage } from '../../utils/toastService/toastService';
 
-let logoutTimer : any;
-let initialToken : string = "";
+let logoutTimer: any;
+let initialToken: string = "";
 let initialUser = {} as User;
 
 const AuthContext = React.createContext({
     token: "",
     isLoggedIn: false,
-    user: { email: "", id: "", role: ""},
-    login: (token : string) => {},
-    logout: () => {}
+    user: { email: "", id: "", role: "" },
+    login: (token: string) => { },
+    logout: () => { }
 })
 
 const retrieveStoredToken = () => {
@@ -29,7 +29,7 @@ const retrieveStoredToken = () => {
     return { token: storedToken, duration: remainingTime }
 }
 
-const calculateRemainingTime = (expiresIn : any) => {
+const calculateRemainingTime = (expiresIn: any) => {
 
     const currentTime = new Date().getTime();
 
@@ -38,20 +38,20 @@ const calculateRemainingTime = (expiresIn : any) => {
     return remainingTime;
 }
 
-const retrieveUserFromToken = (token : string) => {
+const retrieveUserFromToken = (token: string) => {
     const decodedToken = jwt(token);
 
-    let user : User;
+    let user: User;
     user = {
-        email : (decodedToken as any).sub,
-        id : (decodedToken as any).id,
-        role : (decodedToken as any).authorities[0].authority
+        email: (decodedToken as any).sub,
+        id: (decodedToken as any).id,
+        role: (decodedToken as any).authorities[0].authority
     }
 
     return user;
 }
 
-export const AuthContextProvider = (props : any) => {
+export const AuthContextProvider = (props: any) => {
 
     const tokenData = retrieveStoredToken();
 
@@ -60,13 +60,12 @@ export const AuthContextProvider = (props : any) => {
         initialUser = retrieveUserFromToken(initialToken);
     }
 
-    console.log('INIT USER NAKON IFA: ', initialUser);
     const [token, setToken] = useState<string>(initialToken);
     const [user, setUser] = useState<User>(initialUser);
-  
+
     const userIsLoggedIn = !!token;
 
-    const loginHandler = (token : string) => {
+    const loginHandler = (token: string) => {
         let decodedToken = jwt(token)
         let expiresIn = (decodedToken as any).exp;
 
@@ -82,7 +81,7 @@ export const AuthContextProvider = (props : any) => {
 
     const logoutHandler = useCallback(() => {
         setToken('');
-        setUser({ email: "", id: "", role: ""})
+        setUser({ email: "", id: "", role: "" })
         localStorage.removeItem('token');
         localStorage.removeItem('expires');
 
@@ -95,15 +94,15 @@ export const AuthContextProvider = (props : any) => {
 
     useEffect(() => {
         if (tokenData) {
-            if ((tokenData as any).token){
+            if ((tokenData as any).token) {
                 logoutTimer = setTimeout(logoutHandler, (tokenData as any).duration)
             }
         }
     }, [tokenData, logoutHandler])
 
     const contextValue = {
-        token : token,
-        isLoggedIn : userIsLoggedIn,
+        token: token,
+        isLoggedIn: userIsLoggedIn,
         user: user,
         login: loginHandler,
         logout: logoutHandler

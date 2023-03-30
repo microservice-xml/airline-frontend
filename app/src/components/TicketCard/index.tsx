@@ -25,12 +25,12 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
     const context = useContext(AuthContext);
 
     const getRandomNumber = () => {
-        const i = Math.random()*10;
+        const i = Math.random() * 10;
         return i >= 1 && i <= 4;
     }
 
     const getRandomValue = () => {
-        return Math.round(Math.random()*100*0.5)
+        return Math.round(Math.random() * 100 * 0.5)
     }
 
     const sendPurchaseTicketsRequest = async () => {
@@ -83,7 +83,7 @@ const TicketCard = ({ arrivalCity, departureCity, arrival, departure, ticketPric
                                 {arrivalCity.airport} ({arrivalCity.iata_code})
                             </div>
                         </div>
-                        <span className="time"><Moment format="hh:mm a" className="time" style={{color: '#444444', fontWeight: '550'}}>{arrival}</Moment></span>
+                        <span className="time"><Moment format="hh:mm a" className="time" style={{ color: '#444444', fontWeight: '550' }}>{arrival}</Moment></span>
                     </div>
                 </div>
                 <div className="card__bottom__right">

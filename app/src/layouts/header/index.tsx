@@ -73,7 +73,7 @@ function Header() {
             </div>
             <div className={'header-main__options'}>
                 {role === 'REGISTERED' && getUserNavbar()}
-                {role === 'ADMIN' && getUserNavbar()}
+                {role === 'ADMIN' && getAdminNavbar()}
                 {getLoggedButtons()}
             </div>
         </div>

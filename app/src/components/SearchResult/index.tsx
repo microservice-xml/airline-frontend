@@ -8,16 +8,21 @@ type Props = {
     departureCity: string;
     arrival: Date;
     departure: Date;
+    changeState : any;
 }
 
-const SearchResult = ({ arrivalCity, departureCity, arrival, departure }: Props) => {
+const SearchResult = ({ arrivalCity, departureCity, arrival, departure, changeState }: Props) => {
 
     const dateToFormat = '1976-04-19T12:59-0500';
+
+    const handleClick = () => {
+        changeState();
+    }
 
     return (
 
         <div className="search-result">
-            <div className="search-result__icon">
+            <div className="search-result__icon" onClick={handleClick}>
 
             </div>
             <div className="search-result__destination">

@@ -4,6 +4,16 @@ import { getAllArticles } from "../../services/news/newsService";
 import "./index.scss";
 import PopularItem from "./PopularItem";
 import cities from "../../constants/Cities";
+
+const images = [
+  {path: "tokyo", label: 'Tokyo'},
+  {path: "barcelona", label: 'Barcelona'},
+  {path: "Stockholm", label: 'Stockholm'},
+  {path: "buenos", label: 'Buenos Aires'},
+  {path: "rome", label: 'Rome'},
+  {path: "paris", label: 'Paris'}
+]
+
 const Populars = () => {
   const [articles, setArticles] = useState<ArticleItem[]>([]);
 
@@ -25,14 +35,14 @@ const Populars = () => {
     }
 
     let i = 0;
-    for (let article of articles.slice(0, 6)) {
+    for (let image of images) {
       result.push(
         <PopularItem
-          key={article.id}
+          key={image.path}
           imgUrl={require("../../assets/images/backgrounds/" +
-            article.slug +
+            image.path +
             ".jpg")}
-          city={cities.at(i)?.label || "Beograd"}
+          city={image.label || "Beograd"}
         />
       );
       i++;

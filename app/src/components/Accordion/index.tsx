@@ -31,7 +31,7 @@ const ColumnDetails = (props : ColumnProps) => {
 }
 
 const StyledTypography = (props : TypographyProps) => {
-  return (<Typography style={{fontSize : `${props.fontSize}`, fontWeight:`${props.fontWeight}}`}}>{props.text}</Typography>)
+  return (<Typography style={{fontSize : `${props.fontSize}`, fontWeight:`580`}}>{props.text}</Typography>)
 }
 
 function AccordionLanding() {
@@ -53,29 +53,32 @@ function AccordionLanding() {
 
   return (
     <div className={classes['accordion']}>
-    <Accordion style = {accordionStyle}>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <StyledTypography text={getAccordionText()} fontSize={'2rem'} fontWeight={700}/>
-        </AccordionSummary>
-        <AccordionDetails>
-          <div className={classes['details']}>
-            <div className={classes['details__column']}>
-              <ColumnDetails header={strings.search.header} text={strings.search.text}/>
-              <ColumnDetails header={strings.save.header} text={strings.save.text}/>
-              <ColumnDetails header={strings.book.header} text={strings.book.text}/>
+      <div className={classes['accordion__header']}>
+        Book cheap flights with Airdealer
+      </div>
+      <Accordion style = {accordionStyle}>
+          <AccordionSummary
+            expandIcon={<ExpandMoreIcon />}
+            aria-controls="panel1a-content"
+            id="panel1a-header"
+          >
+            <StyledTypography text={getAccordionText()} fontSize={'1.9rem'} fontWeight={700}/>
+          </AccordionSummary>
+          <AccordionDetails>
+            <div className={classes['details']}>
+              <div className={classes['details__column']}>
+                <ColumnDetails header={strings.search.header} text={strings.search.text}/>
+                <ColumnDetails header={strings.save.header} text={strings.save.text}/>
+                <ColumnDetails header={strings.book.header} text={strings.book.text}/>
+              </div>
+              <div className={classes['details__column']}>
+                <ColumnDetails header={strings.find.header} text={strings.find.text}/>
+                <ColumnDetails header={strings.track.header} text={strings.track.text}/>
+                <ColumnDetails header={strings.keep.header} text={strings.keep.text}/>
+              </div>
             </div>
-            <div className={classes['details__column']}>
-              <ColumnDetails header={strings.find.header} text={strings.find.text}/>
-              <ColumnDetails header={strings.track.header} text={strings.track.text}/>
-              <ColumnDetails header={strings.keep.header} text={strings.keep.text}/>
-            </div>
-          </div>
-        </AccordionDetails>
-      </Accordion>
+          </AccordionDetails>
+        </Accordion>
       </div>
   )
 }

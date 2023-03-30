@@ -6,22 +6,28 @@ import "./index.scss"
 import { useLocation } from "react-router-dom";
 import { searchFlights } from "../../services/search/searchService";
 import SearchItem from "../../model/search/SearchResult";
+import SearchComponent from "../../components/SearchComponent";
 
 const ChooseFlight = () => {
 
     const location = useLocation();
     const [searchResults, setSearchResults] = useState<SearchItem[]>([]);
+    const [showSearchBar, setShowSearchBar] = useState<Boolean>(false);
 
     const data = location.state?.data;
-
+    console.log(data);
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [data]);
 
     const fetchData = async () => {
         let response = await searchFlights(data)
         setSearchResults(response.data as SearchItem[])
+    }
+
+    const changeState = () => {
+        setShowSearchBar(prev => !prev)
     }
 
     const renderTickets = () => {
@@ -47,11 +53,12 @@ const ChooseFlight = () => {
 
     return (
         <div className="flights-container">
-            <div>
-            </div>
             <div className="flights-container__search-result">
-                <SearchResult arrivalCity={data.arrivalCity} departureCity={data.departureCity} arrival={data.arrival} departure={data.departure}></SearchResult>
+                <SearchResult arrivalCity={data.arrivalCity} departureCity={data.departureCity} arrival={data.arrival} departure={data.departure} changeState={changeState}></SearchResult>
             </div>
+            {showSearchBar && <div className="flights-container__search-component">
+                <SearchComponent />
+            </div>}
             <div className="flights-container__card">
                 {renderTickets()}
             </div>

@@ -10,6 +10,8 @@ const PopularItem: React.FC<{ city: string; imgUrl: string; key: string }> = (
         style={{
           backgroundImage: `url(${props.imgUrl})`,
           backgroundSize: "cover",
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'center'
         }}
       ></div>
       <div className="popular-item__text">

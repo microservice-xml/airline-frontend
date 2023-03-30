@@ -1,49 +1,57 @@
-.accordion {
-    height: 100%;
-    width: 60%;
-    background-color: transparent;
-    font-size: 2rem;
+@import "../../assets/styles/main.scss";
 
-    &__header {
-        font-size: 2.5rem;
-        font-weight: 600;
-        margin-bottom: 4rem;
-        font-family: 'Open Sans';
-    }
+.accordion {
+  height: 100%;
+  width: 60%;
+  background-color: transparent;
+  font-size: 2rem;
+
+  &__header {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 4rem;
+    font-family: "Open Sans";
+  }
 }
 
 .MuiTypography-root {
-    font-size: 1.8rem !important;
+  font-size: 1.8rem !important;
 }
 
 .details {
+  display: flex;
+  height: 60%;
+  width: 100%;
+  justify-content: space-between;
+
+  &__column {
+    width: 45%;
     display: flex;
-    height: 60%;
-    width: 100%;
+    flex-direction: column;
     justify-content: space-between;
-    
-    &__column {
-        width: 45%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 3rem;
+    gap: 3rem;
 
-        &-text {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            height: 30%;
+    &-text {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      height: 30%;
 
-            &--header {
-                font-size: 1.8rem;
-                font-weight: 600;
-            }
+      &--header {
+        font-size: 1.8rem;
+        font-weight: 600;
+      }
 
-            &--text {
-                font-size: 1.5rem;
-                font-weight: 550;
-            }
-        }
+      &--text {
+        font-size: 1.5rem;
+        font-weight: 550;
+      }
     }
+  }
+}
+
+@include respond(smallscreen) {
+  .accordion {
+    width: 75%;
+  }
 }

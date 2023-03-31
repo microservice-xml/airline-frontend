@@ -107,12 +107,12 @@ const TicketCard = ({
                 ${ticketPrice} per person
               </div>
               <div className="card__bottom__right__button-position">
-                <button
+                {context.user.role === "REGISTERED" && <button
                   className="card__bottom__right__button-style"
                   onClick={sendPurchaseTicketsRequest}
                 >
                   Select
-                </button>
+                </button>}
               </div>
             </>
           )}

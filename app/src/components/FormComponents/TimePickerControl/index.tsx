@@ -80,7 +80,6 @@ const TimePickerControl: React.FC<GenericProps> = (props) => {
             inputRef={field.ref}
             className={props.customClass}
             label={props.label}
-            disablePast
           />
         )}
       />

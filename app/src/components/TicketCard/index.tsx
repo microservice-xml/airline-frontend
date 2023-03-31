@@ -4,6 +4,11 @@ import Moment from "react-moment";
 import City from "../../model/City";
 import AuthContext from "../../store/login/AuthContext";
 import { purchaseTicket } from "../../services/tickets/ticketsService";
+import {
+  ErrorMessage,
+  SuccesMessage,
+} from "../../utils/toastService/toastService";
+import { useNavigate } from "react-router-dom";
 
 type Props = {
   arrivalCity: City;
@@ -27,6 +32,7 @@ const TicketCard = ({
   canPurchase,
 }: Props) => {
   const context = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const getRandomNumber = () => {
     const i = Math.random() * 10;
@@ -44,7 +50,15 @@ const TicketCard = ({
       payedPrice: ticketPrice,
       count: dataSeats,
     };
-    await purchaseTicket(purchaseTicketDto);
+    const response = await purchaseTicket(purchaseTicketDto);
+    if (!response || !response.ok) {
+      ErrorMessage(
+        "Please log in to access this feature. If you don't have an account yet, you can create one by clicking on the 'JOIN US' button. "
+      );
+      return;
+    }
+    SuccesMessage("Purchase successful! ");
+    navigate("/");
   };
 
   return (

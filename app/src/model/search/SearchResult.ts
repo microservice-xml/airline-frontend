@@ -1,8 +1,9 @@
-import FlightRoute from "../FlightRoute"
+import FlightRoute from "../FlightRoute";
 
 export default interface SearchItem {
-    id: string;
-    route: FlightRoute;
-    ticketPrice: number;
-    desiredSeats: number;
+  id: string;
+  route: FlightRoute;
+  ticketPrice: number;
+  desiredSeats: number;
+  availableSeats: number;
 }

@@ -4,6 +4,12 @@ import Moment from "react-moment";
 import City from "../../model/City";
 import AuthContext from "../../store/login/AuthContext";
 import { purchaseTicket } from "../../services/tickets/ticketsService";
+import {
+  ErrorMessage,
+  SuccesMessage,
+} from "../../utils/toastService/toastService";
+import { useNavigate } from "react-router-dom";
+import { deleteFlight } from "../../services/flight/flightService";
 
 type Props = {
   arrivalCity: City;
@@ -14,6 +20,7 @@ type Props = {
   dataSeats: number;
   flightId: string;
   canPurchase: boolean;
+  availableSeats: number;
 };
 
 const TicketCard = ({
@@ -25,8 +32,11 @@ const TicketCard = ({
   dataSeats,
   flightId,
   canPurchase,
+  availableSeats,
 }: Props) => {
   const context = useContext(AuthContext);
+  const navigate = useNavigate();
+  let role = context.user.role;
 
   const getRandomNumber = () => {
     const i = Math.random() * 10;
@@ -37,6 +47,16 @@ const TicketCard = ({
     return Math.round(Math.random() * 100 * 0.5);
   };
 
+  const removeFlight = async () => {
+    const response = await deleteFlight(flightId);
+    if (!response || !response.ok) {
+      ErrorMessage("Ooops ! Something went wrong. Please try again later.");
+      return;
+    }
+    SuccesMessage("Successfully deleted flight! ");
+    navigate("/");
+  };
+
   const sendPurchaseTicketsRequest = async () => {
     const purchaseTicketDto: any = {
       userId: context.user.id,
@@ -44,7 +64,15 @@ const TicketCard = ({
       payedPrice: ticketPrice,
       count: dataSeats,
     };
-    await purchaseTicket(purchaseTicketDto);
+    const response = await purchaseTicket(purchaseTicketDto);
+    if (!response || !response.ok) {
+      ErrorMessage(
+        "Please log in to access this feature. If you don't have an account yet, you can create one by clicking on the 'JOIN US' button. "
+      );
+      return;
+    }
+    SuccesMessage("Purchase successful! ");
+    navigate("/");
   };
 
   return (
@@ -106,13 +134,29 @@ const TicketCard = ({
               <div className="card__bottom__right__total-price">
                 ${ticketPrice} per person
               </div>
+              <div className="card__bottom__right--seats">
+                <p className="card__bottom__right--seats-text">
+                  {availableSeats}
+                </p>
+                <div className="card__bottom__right--seats-icon"></div>
+              </div>
               <div className="card__bottom__right__button-position">
-                {context.user.role === "REGISTERED" && <button
-                  className="card__bottom__right__button-style"
-                  onClick={sendPurchaseTicketsRequest}
-                >
-                  Select
-                </button>}
+                {role === "ADMIN" && (
+                  <button
+                    className="card__bottom__right__button-style"
+                    onClick={removeFlight}
+                  >
+                    Delete
+                  </button>
+                )}
+                {role === "REGISTERED" && (
+                  <button
+                    className="card__bottom__right__button-style"
+                    onClick={sendPurchaseTicketsRequest}
+                  >
+                    Select
+                  </button>
+                )}
               </div>
             </>
           )}

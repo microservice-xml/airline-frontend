@@ -9,6 +9,7 @@ import {
   SuccesMessage,
 } from "../../utils/toastService/toastService";
 import { useNavigate } from "react-router-dom";
+import { deleteFlight } from "../../services/flight/flightService";
 
 type Props = {
   arrivalCity: City;
@@ -19,6 +20,7 @@ type Props = {
   dataSeats: number;
   flightId: string;
   canPurchase: boolean;
+  availableSeats: number;
 };
 
 const TicketCard = ({
@@ -30,9 +32,11 @@ const TicketCard = ({
   dataSeats,
   flightId,
   canPurchase,
+  availableSeats,
 }: Props) => {
   const context = useContext(AuthContext);
   const navigate = useNavigate();
+  let role = context.user.role;
 
   const getRandomNumber = () => {
     const i = Math.random() * 10;
@@ -41,6 +45,16 @@ const TicketCard = ({
 
   const getRandomValue = () => {
     return Math.round(Math.random() * 100 * 0.5);
+  };
+
+  const removeFlight = async () => {
+    const response = await deleteFlight(flightId);
+    if (!response || !response.ok) {
+      ErrorMessage("Ooops ! Something went wrong. Please try again later.");
+      return;
+    }
+    SuccesMessage("Successfully deleted flight! ");
+    navigate("/");
   };
 
   const sendPurchaseTicketsRequest = async () => {
@@ -120,13 +134,28 @@ const TicketCard = ({
               <div className="card__bottom__right__total-price">
                 ${ticketPrice} per person
               </div>
+              <div className="card__bottom__right--seats">
+                <p className="card__bottom__right--seats-text">
+                  {availableSeats}
+                </p>
+                <div className="card__bottom__right--seats-icon"></div>
+              </div>
               <div className="card__bottom__right__button-position">
-                <button
-                  className="card__bottom__right__button-style"
-                  onClick={sendPurchaseTicketsRequest}
-                >
-                  Select
-                </button>
+                {role === "ADMIN" ? (
+                  <button
+                    className="card__bottom__right__button-style"
+                    onClick={removeFlight}
+                  >
+                    Delete
+                  </button>
+                ) : (
+                  <button
+                    className="card__bottom__right__button-style"
+                    onClick={sendPurchaseTicketsRequest}
+                  >
+                    Select
+                  </button>
+                )}
               </div>
             </>
           )}

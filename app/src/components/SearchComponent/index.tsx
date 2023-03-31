@@ -47,7 +47,6 @@ const SearchComponent = () => {
       desiredSeats: dto.desiredSeats.value,
     };
 
-    console.log(obj);
     navigate("/choose-flight", {
       state: {
         data: obj,

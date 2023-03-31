@@ -23,7 +23,6 @@ const ChooseFlight = () => {
     let response = await searchFlights(data);
     setSearchResults(response.data as SearchItem[]);
   };
-
   const changeState = () => {
     setShowSearchBar((prev) => !prev);
   };
@@ -43,7 +42,6 @@ const ChooseFlight = () => {
     }
 
     for (let item of searchResults) {
-      console.log(searchResults);
       result.push(
         <TicketCard
           key={item.id}
@@ -55,6 +53,7 @@ const ChooseFlight = () => {
           dataSeats={data.desiredSeats}
           flightId={item.id}
           canPurchase={true}
+          availableSeats={item.availableSeats}
         />
       );
     }

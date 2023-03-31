@@ -141,14 +141,15 @@ const TicketCard = ({
                 <div className="card__bottom__right--seats-icon"></div>
               </div>
               <div className="card__bottom__right__button-position">
-                {role === "ADMIN" ? (
+                {role === "ADMIN" && (
                   <button
                     className="card__bottom__right__button-style"
                     onClick={removeFlight}
                   >
                     Delete
                   </button>
-                ) : (
+                )}
+                {role === "REGISTERED" && (
                   <button
                     className="card__bottom__right__button-style"
                     onClick={sendPurchaseTicketsRequest}

@@ -7,6 +7,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import passengers from "../../constants/Passengers";
 import { ErrorMessage } from "../../utils/toastService/toastService";
 import { getAll } from "../../services/city/cityService";
+import { getDate } from "../../utils/timeConverter/timeConverter";
 
 const SearchComponent = () => {
   const form = useForm();
@@ -42,8 +43,8 @@ const SearchComponent = () => {
     let obj = {
       departureCity: dto.from.label.split(" ")[0],
       arrivalCity: dto.to.label.split(" ")[0],
-      departure: dto.departure.toISOString().slice(0, 10),
-      arrival: dto.arrival.toISOString().slice(0, 10),
+      departure: getDate(dto.departure),
+      arrival: getDate(dto.arrival),
       desiredSeats: dto.desiredSeats.value,
     };
 

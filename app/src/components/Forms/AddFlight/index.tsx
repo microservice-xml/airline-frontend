@@ -14,6 +14,7 @@ import {
 import TimePickerControl from "../../FormComponents/TimePickerControl";
 import { useNavigate } from "react-router-dom";
 import { createFlight } from "../../../services/flight/flightService";
+import { getDateTime } from "../../../utils/timeConverter/timeConverter";
 
 const AddFlight = () => {
   const form = useForm();
@@ -48,17 +49,12 @@ const AddFlight = () => {
     let obj = {
       departureCity: dto.from.label,
       arrivalCity: dto.to.label,
-      departure:
-        dto.departure.toISOString().slice(0, 10) +
-        dto.departTime.toISOString().slice(10, 19),
-      arrival:
-        dto.arrival.toISOString().slice(0, 10) +
-        dto.arrivalTime.toISOString().slice(10, 19),
+      departure: getDateTime(dto.departure, dto.departTime),
+      arrival: getDateTime(dto.arrival, dto.arrivalTime),
       numSeats: Number(dto.numSeats),
       price: Number(dto.price),
       desc: dto.describe,
     };
-
     let response: any;
     response = await createFlight(obj);
     if (!response || !response.ok) {

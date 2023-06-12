@@ -67,7 +67,7 @@ export const AuthContextProvider = (props: any) => {
     let decodedToken = jwt(token);
     let expiresIn = (decodedToken as any).exp;
 
-    const remainingTime = calculateRemainingTime(expiresIn);
+    const remainingTime = calculateRemainingTime(Number(expiresIn.toString()) + "000");
 
     localStorage.setItem("token", token);
     localStorage.setItem("expires", expiresIn.toString() + "000");

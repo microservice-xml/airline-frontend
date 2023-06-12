@@ -12,6 +12,7 @@ import AuthContext from "../store/login/AuthContext";
 import UnauthorizedPage from "../pages/error/401";
 import CreateFlight from "../pages/flight/create-flight";
 import MyTicketsPage from "../pages/my-tickets";
+import MyApiKeys from "../pages/my-api-keys";
 
 let unregisteredPages = {
   News: {
@@ -61,6 +62,10 @@ let unregisteredPages = {
   MyTickets: {
     path: "/my-tickets",
     component: <MyTicketsPage />,
+  },
+  MyApiKeys: {
+    path: "/my-api-keys",
+    component: <MyApiKeys />,
   },
 };
 

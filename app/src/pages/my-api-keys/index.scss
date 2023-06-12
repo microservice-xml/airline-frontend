@@ -1,0 +1,29 @@
+@import '../../assets/styles/main.scss';
+
+.my-api-keys-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.api-key-card {
+  font-size: 14px;
+  min-width: 340px;
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-bottom: 15px;
+  border-radius: 20px;
+}
+
+.api-key-card input {
+  font-size: 14px;
+}
+
+.api-key-card button {
+  font-size: 14px;
+}

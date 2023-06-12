@@ -39,6 +39,10 @@ function Header() {
           text={"My Tickets"}
           handlerFunction={() => navigate("/my-tickets")}
         />
+        <NavButton
+          text={"My Api Keys"}
+          handlerFunction={() => navigate("/my-api-keys")}
+        />
       </React.Fragment>
     );
   };
